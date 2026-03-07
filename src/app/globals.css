@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   THEME: Dark Futuristic — Neon Engineering Lab
+   ───────────────────────────────────────────── */
+
+@theme {
+  --color-background: #030712;
+  --color-foreground: #f8fafc;
+
+  --color-primary: #4ade80;
+  --color-primary-foreground: #052e16;
+
+  --color-secondary: #1c1c27;
+  --color-secondary-foreground: #f8fafc;
+
+  --color-muted: #1c1c27;
+  --color-muted-foreground: #6b7280;
+
+  --color-accent: #1c1c27;
+  --color-accent-foreground: #f8fafc;
+
+  --color-border: #1f2937;
+  --color-input: #1c1c27;
+  --color-ring: #4ade80;
+}
+
+/* ── Base ──────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100svh;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(74, 222, 128, 0.25);
+  color: var(--color-foreground);
+}
+
+/* ── Glassmorphism utilities ───────────────── */
+.glass {
+  background-color: rgba(3, 7, 18, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card {
+  background-color: rgba(28, 28, 39, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Neon glow utilities ───────────────────── */
+.text-glow {
+  text-shadow:
+    0 0 10px rgba(74, 222, 128, 0.5),
+    0 0 25px rgba(74, 222, 128, 0.25);
+}
+
+.bg-glow {
+  box-shadow:
+    0 0 20px rgba(74, 222, 128, 0.2),
+    inset 0 0 20px rgba(74, 222, 128, 0.07);
+}
+
+/* ── Custom scrollbar ──────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
