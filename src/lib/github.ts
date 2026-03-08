@@ -38,7 +38,7 @@ export async function getGithubData(username: string): Promise<GitHubData> {
     try {
         const [userRes, reposRes] = await Promise.all([
             fetch(`https://api.github.com/users/${username}`, { headers, next: { revalidate: 3600 } }),
-            fetch(`https://api.github.com/users/${username}/repos?sort=stars&per_page=6`, {
+            fetch(`https://api.github.com/users/${username}/repos?sort=stars&per_page=15`, {
                 headers,
                 next: { revalidate: 3600 },
             }),

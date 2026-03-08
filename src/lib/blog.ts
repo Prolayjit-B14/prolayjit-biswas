@@ -5,13 +5,15 @@ export interface BlogPost {
     categories: string[];
     contentSnippet: string;
     source: string;
+    coverImage?: string;
+    readingTime?: number;
 }
 
 // Fetches from Dev.to public API (no RSS parser needed — avoids server-side parsing issues)
 export async function getBlogPosts(): Promise<BlogPost[]> {
     try {
         const res = await fetch(
-            "https://dev.to/api/articles?username=pro_lay04&per_page=6",
+            "https://dev.to/api/articles?username=pro_lay04&per_page=9",
             { next: { revalidate: 3600 } }
         );
 
@@ -26,9 +28,12 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
             categories: Array.isArray(a.tag_list) ? (a.tag_list as string[]) : [],
             contentSnippet: String(a.description ?? ""),
             source: "dev.to",
+            coverImage: String(a.cover_image ?? ""),
+            readingTime: Number(a.reading_time_minutes ?? 0),
         }));
     } catch (err) {
         console.error("[Blog] Failed to fetch posts:", err);
         return [];
     }
 }
+

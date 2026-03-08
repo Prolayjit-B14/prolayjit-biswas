@@ -26,8 +26,8 @@
       "@/*": [
         "./src/*"
       ]
-    }prolayjit-biswas/.next/types /**/*.ts
-  },prolayjit-biswas/.next/dev/types /**/*.ts
+    }
+  },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -37,6 +37,6 @@
     "**/*.mts"
   ],
   "exclude": [
-    "prolayjit-biswas/node_modules"
+    "node_modules"
   ]
 }

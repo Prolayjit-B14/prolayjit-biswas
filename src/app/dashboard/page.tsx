@@ -62,9 +62,6 @@ export default async function DashboardPage() {
                     </section>
 
                     <section>
-                        <div className="flex items-center justify-between mb-8">
-                            <h2 className="text-2xl font-bold text-[#f8fafc]">Top Repositories</h2>
-                        </div>
                         <RepoCards repos={repos} />
                     </section>
                 </div>

@@ -4,29 +4,41 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Chatbot } from "@/components/ai/Chatbot";
+import { CustomCursor } from "@/components/layout/CustomCursor";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { SmoothScroller } from "@/components/layout/SmoothScroller";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Prolayjit Biswas | Electronics Engineer & Hardware Developer",
   description: "From Hello World to Hardware — Building Smart Systems with Code and Circuits.",
+  keywords: ["Electronics Engineer", "IoT", "ESP32", "PCB Design", "Embedded Systems", "Hardware Developer"],
+  authors: [{ name: "Prolayjit Biswas" }],
+  openGraph: {
+    title: "Prolayjit Biswas | Electronics Engineer",
+    description: "From Hello World to Hardware — Building Smart Systems with Code and Circuits.",
+    type: "website",
+    locale: "en_IN",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} min-h-screen bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground`}>
-        <Navbar />
-        <main className="flex min-h-screen flex-col pt-16">
-          {children}
-        </main>
-        <Chatbot />
-        <Footer />
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body className={`${inter.className} min-h-screen bg-[#030712] text-[#f1f5f9] antialiased overflow-x-hidden`}>
+        <ThemeProvider>
+          <SmoothScroller />
+          <CustomCursor />
+          <Navbar />
+          <main className="flex min-h-screen flex-col pt-16">
+            {children}
+          </main>
+          <Chatbot />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+

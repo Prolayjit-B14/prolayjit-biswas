@@ -1,39 +1,31 @@
 export const skills = {
     hardware: [
-        "ESP32",
-        "Arduino",
-        "Microcontrollers",
-        "Digital Logic",
-        "Circuit Design",
-        "PCB Design",
-        "Sensor Integration",
-        "BLE Modules",
-        "IoT Systems",
-        "Hardware Prototyping"
+        { name: "ESP32 / Arduino", icon: "SiArduino" },
+        { name: "Raspberry Pi", icon: "SiRaspberrypi" },
+        { name: "Microcontrollers", icon: "Cpu" },
+        { name: "PCB Design", icon: "CircuitBoard" },
+        { name: "IoT Systems", icon: "Wifi" },
+        { name: "Digital Electronics", icon: "Zap" },
+        { name: "Verilog / VHDL", icon: "FileCode" },
+        { name: "Computer Architecture", icon: "Server" },
+        { name: "IC Design", icon: "Microchip" },
+        { name: "Wearable Tech", icon: "Watch" },
     ],
-    programming: [
-        "C",
-        "C++",
-        "Python",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "MATLAB"
+    software: [
+        { name: "C / C++", icon: "SiCplusplus" },
+        { name: "Python", icon: "SiPython" },
+        { name: "JavaScript / TS", icon: "SiJavascript" },
+        { name: "Next.js / React", icon: "SiNextdotjs" },
+        { name: "Tailwind CSS", icon: "SiTailwindcss" },
+        { name: "Node.js", icon: "SiNodedotjs" },
     ],
     tools: [
-        "Git",
-        "GitHub",
-        "VS Code",
-        "KiCAD",
-        "Altium Designer",
-        "AutoCAD",
-        "MIT App Inventor",
-        "Canva"
-    ],
-    technical: [
-        "Project Management",
-        "Technical Documentation",
-        "Hardware Integration",
-        "Team Collaboration"
+        { name: "Proteus", icon: "Settings" },
+        { name: "KiCAD", icon: "PenTool" },
+        { name: "Fusion 360", icon: "Box" },
+        { name: "AutoCAD", icon: "Compass" },
+        { name: "3D Printing", icon: "Printer" },
+        { name: "Git / GitHub", icon: "Github" },
+        { name: "VS Code", icon: "Code" },
     ]
 };
