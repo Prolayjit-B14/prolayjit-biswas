@@ -39,9 +39,8 @@ export async function POST(req: Request) {
         return NextResponse.json({ message: response.choices[0].message.content });
     } catch (error) {
         console.error("Chat API Error:", error);
-        return NextResponse.json(
-            { error: "Failed to process chat request" },
-            { status: 500 }
-        );
+        return NextResponse.json({
+            message: "Sorry, my neural network had a hiccup! Please reach out directly at prolayjitbiswas14112004@gmail.com."
+        });
     }
 }

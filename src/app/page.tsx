@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { Timeline } from "@/components/sections/Timeline";
+import { DomainRoles } from "@/components/sections/DomainRoles";
 import { Skills } from "@/components/sections/Skills";
 import { SocialWall } from "@/components/sections/SocialWall";
 import { Contact } from "@/components/sections/Contact";
@@ -7,28 +8,33 @@ import { Container } from "@/components/layout/Container";
 import { Trophy, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getGithubData } from "@/lib/github";
+import { getBlogPosts } from "@/lib/blog";
 import { RepoCards } from "@/components/dashboard/RepoCards";
 
 export default async function Home() {
   const { repos } = await getGithubData("Prolayjit-B14");
-  const topRepos = repos.slice(0, 3); // Get just top 3 for homepage
+  const topRepos = repos.slice(0, 3);
+
+  const allPosts = await getBlogPosts();
+  const topPosts = allPosts.slice(0, 3);
 
   return (
     <>
       <Hero />
       <Timeline />
+      <DomainRoles />
       <Skills />
 
       {/* Featured Projects/Hackathons Section */}
-      <section className="relative py-24 bg-background">
+      <section className="relative py-16 bg-background">
         <Container>
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary w-fit uppercase mb-4 tracking-wider">
                 <Trophy className="h-3 w-3" />
                 Featured Work
               </div>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-glow">
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight text-glow">
                 Hackathons & Projects
               </h2>
             </div>
@@ -45,7 +51,7 @@ export default async function Home() {
         </Container>
       </section>
 
-      <SocialWall />
+      <SocialWall posts={topPosts} />
       <Contact />
     </>
   );

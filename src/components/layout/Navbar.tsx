@@ -8,7 +8,7 @@ import { useTheme } from "./ThemeProvider";
 import { cn } from "@/lib/utils";
 import {
     LayoutDashboard, FileText, Cpu, Blocks, Menu, X, Send,
-    Sun, Moon, Terminal as TerminalIcon, Trophy, GraduationCap, type LucideIcon,
+    Sun, Moon, Terminal as TerminalIcon, Trophy, GraduationCap, Image as ImageIcon, type LucideIcon,
 } from "lucide-react";
 
 interface NavItem {
@@ -21,6 +21,7 @@ const NAV_ITEMS: NavItem[] = [
     { href: "/projects", label: "Projects", icon: Blocks },
     { href: "/hardware", label: "Lab", icon: Cpu },
     { href: "/hackathons", label: "Hackathons", icon: Trophy },
+    { href: "/gallery", label: "Gallery", icon: ImageIcon },
     { href: "/education", label: "Education", icon: GraduationCap },
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { href: "/terminal", label: "Terminal", icon: TerminalIcon },
