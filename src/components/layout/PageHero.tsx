@@ -8,14 +8,14 @@ import { Container } from "./Container";
 // Named badge icons used via a string lookup — avoids passing functions across server/client boundary
 import {
     Blocks, FileText, Image as ImageIcon, Trophy, GraduationCap,
-    Cpu, LayoutDashboard, Terminal as TerminalIcon, Code2, Newspaper,
+    Cpu, LayoutDashboard, Terminal as TerminalIconComp, Code2, Newspaper,
     type LucideIcon
 } from "lucide-react";
 
 // icon name → component lookup (all static)
 const ICONS: Record<string, LucideIcon> = {
     Blocks, FileText, ImageIcon, Trophy, GraduationCap,
-    Cpu, LayoutDashboard, TerminalIcon, Code2, Newspaper,
+    Cpu, LayoutDashboard, TerminalIcon: TerminalIconComp, Code2, Newspaper,
 };
 
 interface PageHeroProps {

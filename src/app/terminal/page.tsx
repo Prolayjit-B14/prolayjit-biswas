@@ -1,6 +1,6 @@
 import { Container } from "@/components/layout/Container";
+import { PageHero } from "@/components/layout/PageHero";
 import { Terminal } from "@/components/terminal/Terminal";
-import { Terminal as TermIcon } from "lucide-react";
 
 export const metadata = {
     title: "Terminal | Prolayjit Biswas",
@@ -9,19 +9,19 @@ export const metadata = {
 
 export default function TerminalPage() {
     return (
-        <div className="relative py-24 bg-background min-h-screen flex items-center justify-center">
+        <div className="relative bg-[#030712] min-h-screen">
+            <PageHero
+                badge="CLI · Interactive Shell"
+                badgeIconName="TerminalIcon"
+                title="System Terminal"
+                description='Type commands to explore my portfolio environment. Try "help" to see what&#39;s available — projects, skills, contact, and more.'
+                accentColor="primary"
+                align="center"
+            />
             <Container>
-                <div className="mb-12 text-center">
-                    <h1 className="flex items-center justify-center gap-4 text-4xl md:text-5xl font-black tracking-tight mb-4 text-glow mx-auto">
-                        <TermIcon className="h-8 w-8 text-primary" />
-                        System Terminal
-                    </h1>
-                    <p className="text-muted-foreground">
-                        Execute commands to explore my digital portfolio environment.
-                    </p>
+                <div className="py-10 max-w-4xl mx-auto">
+                    <Terminal />
                 </div>
-
-                <Terminal />
             </Container>
         </div>
     );

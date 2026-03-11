@@ -1,7 +1,8 @@
 import { Container } from "@/components/layout/Container";
+import { PageHero } from "@/components/layout/PageHero";
 import { PCBViewer } from "@/components/hardware/PCBViewer";
 import { HardwareGallery } from "@/components/hardware/HardwareGallery";
-import { Cpu, Layers } from "lucide-react";
+import { Cpu } from "lucide-react";
 
 export const metadata = {
     title: "Hardware Lab | Prolayjit Biswas",
@@ -11,47 +12,35 @@ export const metadata = {
 export default function HardwareLabPage() {
     return (
         <div className="min-h-screen bg-[#030712]">
-            {/* Page Header */}
-            <div className="border-b border-white/5 bg-[#030712]/80 backdrop-blur-lg">
-                <Container>
-                    <div className="flex flex-col gap-2 py-16 pt-28">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary w-fit tracking-widest uppercase mb-4">
-                            <Layers className="h-3 w-3" />
-                            Embedded Systems · PCB Design
-                        </div>
-                        <h1 className="flex items-center gap-4 text-4xl md:text-6xl font-black tracking-tight text-glow">
-                            <Cpu className="h-9 w-9 text-primary" />
-                            Hardware Lab
-                        </h1>
-                        <p className="text-lg text-[#6b7280] max-w-xl mt-2">
-                            Explore 3D PCB models, breadboard prototypes, circuit diagrams, and live experiments.
-                        </p>
-                    </div>
-                </Container>
-            </div>
+            <PageHero
+                badge="Embedded Systems · PCB Design"
+                badgeIconName="Cpu"
+                title="Hardware Lab"
+                description="Explore 3D PCB models, breadboard prototypes, circuit diagrams, and live experiments. From UART handshakes to wearable builds."
+                accentColor="blue"
+            />
 
             <Container>
-                <div className="py-16 space-y-24">
+                <div className="py-14 space-y-20">
                     {/* PCB Viewer */}
                     <section>
-                        <div className="flex items-center justify-between mb-8">
-                            <div>
-                                <h2 className="text-2xl font-bold text-[#f8fafc] mb-1">Interactive PCB Viewer</h2>
-                                <p className="text-sm text-[#6b7280]">Drag to orbit · Scroll to zoom · Auto-rotates</p>
-                            </div>
+                        <div className="flex items-center gap-3 mb-8">
+                            <div className="h-0.5 w-8 bg-gradient-to-r from-blue-500 to-transparent rounded-full" />
+                            <h2 className="text-xl font-bold text-[#f8fafc]">Interactive PCB Viewer</h2>
+                            <span className="text-xs text-[#6b7280] font-medium">Drag · Orbit · Zoom</span>
                         </div>
                         <PCBViewer />
                     </section>
 
                     {/* Gallery */}
                     <section>
-                        <div className="mb-8">
-                            <h2 className="text-2xl font-bold text-[#f8fafc] mb-2">Prototyping Gallery</h2>
-                            <p className="text-[#6b7280] max-w-2xl">
-                                A look into the hands-on engineering process — from initial breadboard sketches and
-                                logic analyzer outputs to finalized wearable assemblies.
-                            </p>
+                        <div className="flex items-center gap-3 mb-8">
+                            <div className="h-0.5 w-8 bg-gradient-to-r from-blue-500 to-transparent rounded-full" />
+                            <h2 className="text-xl font-bold text-[#f8fafc]">Prototyping Gallery</h2>
                         </div>
+                        <p className="text-[#6b7280] max-w-2xl mb-8 text-sm">
+                            A look into the hands-on engineering process — from initial breadboard sketches and logic analyzer outputs to finalized wearable assemblies.
+                        </p>
                         <HardwareGallery />
                     </section>
                 </div>
