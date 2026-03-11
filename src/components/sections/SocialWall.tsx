@@ -3,8 +3,7 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { Heart, MessageCircle, Repeat2, ExternalLink, BookOpen } from "lucide-react";
-import { SiLinkedin } from "react-icons/si";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 // Hardcoded realistic posts — LinkedIn/X don't have open public post APIs
 const LINKEDIN_POSTS = [
@@ -77,7 +76,7 @@ function LinkedInCard({ post, i }: { post: typeof LINKEDIN_POSTS[0]; i: number }
                     <p className="font-bold text-sm text-[#f8fafc] truncate">Prolayjit Biswas</p>
                     <p className="text-[11px] text-[#94a3b8] truncate">B.Tech Electronics (VLSI) · MAKAUT</p>
                 </div>
-                <SiLinkedin className="w-5 h-5 text-[#0077b5] flex-shrink-0" />
+                <FaLinkedin className="w-5 h-5 text-[#0077b5] flex-shrink-0" />
             </div>
 
             {/* Post text */}
@@ -178,7 +177,7 @@ export function SocialWall({ posts }: { posts: any[] }) {
                     <div className="flex flex-wrap items-center gap-3">
                         <a href="https://www.linkedin.com/in/prolayjit-biswas" target="_blank" rel="noreferrer"
                             className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0077b5]/10 text-[#0077b5] border border-[#0077b5]/20 hover:bg-[#0077b5] hover:text-white transition-all text-sm font-semibold">
-                            <SiLinkedin className="w-4 h-4" /> LinkedIn
+                            <FaLinkedin className="w-4 h-4" /> LinkedIn
                         </a>
                         <a href="https://x.com/pro_lay04" target="_blank" rel="noreferrer"
                             className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white/5 text-[#f8fafc] border border-white/10 hover:bg-white hover:text-black transition-all text-sm font-semibold">
@@ -190,7 +189,7 @@ export function SocialWall({ posts }: { posts: any[] }) {
                 {/* LinkedIn posts */}
                 <div className="mb-8">
                     <div className="flex items-center gap-2 mb-5">
-                        <SiLinkedin className="w-4 h-4 text-[#0077b5]" />
+                        <FaLinkedin className="w-4 h-4 text-[#0077b5]" />
                         <span className="text-xs font-bold uppercase tracking-widest text-[#6b7280]">LinkedIn</span>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
