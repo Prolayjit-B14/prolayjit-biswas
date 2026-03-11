@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────
-   THEME TOKENS
+   DESIGN TOKENS — DARK ONLY
    ───────────────────────────────────────────── */
-
 @theme {
   --color-background: #030712;
   --color-foreground: #f1f5f9;
@@ -17,20 +16,6 @@
   --color-card: #0f172a;
 }
 
-/* ─────────────────────────────────────────────
-   LIGHT MODE OVERRIDE (html.light)
-   ───────────────────────────────────────────── */
-html.light {
-  --color-background: #f8fafc;
-  --color-foreground: #0f172a;
-  --color-secondary: #e2e8f0;
-  --color-secondary-foreground: #0f172a;
-  --color-muted: #f1f5f9;
-  --color-muted-foreground: #475569;
-  --color-border: #cbd5e1;
-  --color-card: #ffffff;
-}
-
 /* ── Base ──────────────────────────────────── */
 html {
   scroll-behavior: smooth;
@@ -38,82 +23,30 @@ html {
 
 body {
   min-height: 100svh;
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background-color: #030712;
+  color: #f1f5f9;
   font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   cursor: none;
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Hide cursor for custom one — only on desktop */
+/* Hide system cursor on desktop — replaced by custom */
 @media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
+  * { cursor: none !important; }
 }
 
 ::selection {
   background-color: rgba(74, 222, 128, 0.25);
-  color: var(--color-foreground);
+  color: #f1f5f9;
 }
 
-/* ─────────────────────────────────────────────
-   LIGHT MODE — Global structural overrides
-   These fix the hardcoded dark hex values
-   ───────────────────────────────────────────── */
-
-/* Dark backgrounds used via Tailwind arbitrary values */
-html.light [class*="bg-[#030712]"],
-html.light [class*="bg-[#0a0f1c]"],
-html.light [class*="bg-[#0a0a0a]"],
-html.light [class*="bg-[#0f172a]"] {
-  background-color: var(--color-card) !important;
-}
-
-/* Text colors — flip dark text to light-mode foreground */
-html.light [class*="text-[#f8fafc]"],
-html.light [class*="text-[#f1f5f9]"] {
-  color: var(--color-foreground) !important;
-}
-
-html.light [class*="text-[#94a3b8]"],
-html.light [class*="text-[#6b7280]"],
-html.light [class*="text-[#cbd5e1]"] {
-  color: var(--color-muted-foreground) !important;
-}
-
-/* Borders */
-html.light [class*="border-white/5"],
-html.light [class*="border-white/10"] {
-  border-color: var(--color-border) !important;
-}
-
-/* Navbar light mode */
-html.light nav {
-  background-color: rgba(248, 250, 252, 0.85) !important;
-  border-bottom-color: var(--color-border) !important;
-}
-
-/* Background sections */
-html.light section {
-  background-color: var(--color-background) !important;
-}
-
-/* ── Glassmorphism — adaptive ─────────────── */
+/* ── Glassmorphism ─────────────────────────── */
 .glass {
-  background-color: rgba(3, 7, 18, 0.5);
+  background-color: rgba(3, 7, 18, 0.55);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
-}
-
-html.light .glass {
-  background-color: rgba(255, 255, 255, 0.75) !important;
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07) !important;
 }
 
 .glass-card {
@@ -126,26 +59,11 @@ html.light .glass {
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-html.light .glass-card {
-  background-color: rgba(255, 255, 255, 0.92) !important;
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.07) !important;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07) !important;
-}
-
-/* ── Glow effects — adaptive ────────────── */
+/* ── Glow ──────────────────────────────────── */
 .text-glow {
   text-shadow:
-    0 0 12px rgba(74, 222, 128, 0.55),
-    0 0 30px rgba(74, 222, 128, 0.2);
-}
-
-html.light .text-glow {
-  text-shadow:
-    0 0 8px rgba(22, 163, 74, 0.35),
-    0 0 20px rgba(22, 163, 74, 0.12);
-  color: var(--color-foreground) !important;
+    0 0 12px rgba(74, 222, 128, 0.6),
+    0 0 32px rgba(74, 222, 128, 0.25);
 }
 
 .bg-glow {
@@ -154,60 +72,42 @@ html.light .text-glow {
     inset 0 0 20px rgba(74, 222, 128, 0.07);
 }
 
-/* Force foreground/background on light mode for key divs */
-html.light main,
-html.light footer {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-}
-
-/* ── Neon grid background pattern ─────────── */
+/* ── Neon grid ─────────────────────────────── */
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-html.light .grid-pattern {
-  background-image:
-    linear-gradient(rgba(22, 163, 74, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(22, 163, 74, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(74, 222, 128, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 222, 128, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
 /* ── Custom scrollbar ──────────────────────── */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: rgba(74, 222, 128, 0.3);
   border-radius: 999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(74, 222, 128, 0.6);
 }
 
-/* ── Smooth page transitions ───────────────── */
+/* ── Page fade-in animation ────────────────── */
 @keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .animate-fade-in-up {
   animation: fade-in-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Marquee animation (Skills scroll) ─────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Prevent animation jank — GPU-accelerate scrolling elements */
+[data-marquee] {
+  will-change: transform;
+  transform: translateZ(0);
 }
