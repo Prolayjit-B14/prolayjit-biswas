@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -30,13 +30,20 @@ const NAV_ITEMS: NavItem[] = [
 export function Navbar() {
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
 
     const isActive = (href: string) =>
         pathname === href || (href !== "/" && pathname.startsWith(href));
 
     return (
         <>
-            <nav className="fixed top-0 z-50 w-full border-b border-white/5 bg-[#030712]/80 backdrop-blur-2xl">
+            <nav className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled ? "border-b border-white/8 bg-[#030712]/90 backdrop-blur-2xl shadow-[0_1px_30px_rgba(0,0,0,0.5)]" : "border-b border-white/5 bg-[#030712]/80 backdrop-blur-2xl"}`}>
                 <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
                     {/* Logo */}

@@ -1,77 +1,105 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
-import { Image as ImageIcon } from "lucide-react";
+import { PageHero } from "@/components/layout/PageHero";
 import { hackathons } from "@/data/hackathons";
 import { projects } from "@/data/projects";
+import { Image as ImageIcon, Layers } from "lucide-react";
 
-export const metadata = {
-    title: "Gallery | Prolayjit Biswas",
-    description: "Visual showcase of hardware projects, hackathon achievements, and prototypes.",
+const CATEGORY_COLORS: Record<string, string> = {
+    Hackathon: "bg-amber-500/15 text-amber-300 border-amber-500/30",
+    Hardware:  "bg-blue-500/15 text-blue-300 border-blue-500/30",
+    Software:  "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+    IoT:       "bg-cyan-500/15 text-cyan-300 border-cyan-500/30",
+    AI:        "bg-purple-500/15 text-purple-300 border-purple-500/30",
 };
 
 export default function GalleryPage() {
-    // Combine hackathons and projects that have images
     const galleryItems = [
         ...hackathons.map(h => ({
-            title: h.name,
-            subtitle: h.project,
-            imageUrl: h.imageUrl,
-            category: "Hackathon",
-            date: h.date
+            title: h.name, subtitle: h.project,
+            imageUrl: h.imageUrl, category: "Hackathon", date: h.date
         })),
         ...projects.filter(p => p.imageUrl).map(p => ({
-            title: p.title,
-            subtitle: p.role,
-            imageUrl: p.imageUrl,
-            category: p.category,
-            date: p.date
+            title: p.title, subtitle: p.role,
+            imageUrl: p.imageUrl, category: p.category, date: p.date
         }))
-    ].filter(item => item.imageUrl); // Ensure they all have images
+    ].filter(item => item.imageUrl);
 
     return (
-        <div className="relative py-24 bg-background min-h-screen">
+        <div className="relative bg-[#030712] min-h-screen">
+            <PageHero
+                badge="Visual Portfolio"
+                badgeIconName="ImageIcon"
+                title="Project Gallery"
+                description="A visual journey through hardware prototypes, hackathon projects, wearable builds, and software deployments."
+                accentColor="amber"
+                align="center"
+            />
+
             <Container>
-                {/* Header */}
-                <div className="mb-16 max-w-2xl text-center mx-auto">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary w-fit tracking-widest uppercase mb-4">
-                        <ImageIcon className="h-3 w-3" />
-                        Visual Portfolio
+                <div className="py-14">
+                    {/* Stats row */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                        {[
+                            { label: "Total Showcase", value: galleryItems.length },
+                            { label: "Hackathon Projects", value: hackathons.length },
+                            { label: "Engineering Projects", value: projects.length },
+                            { label: "Categories", value: 5 },
+                        ].map((stat, i) => (
+                            <motion.div
+                                key={stat.label}
+                                initial={{ opacity: 0, y: 16 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.08 }}
+                                className="glass-card p-5 rounded-2xl border border-white/5 text-center"
+                            >
+                                <p className="text-3xl font-black text-glow mb-1">{stat.value}</p>
+                                <p className="text-xs text-[#6b7280] font-semibold uppercase tracking-wider">{stat.label}</p>
+                            </motion.div>
+                        ))}
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-glow">
-                        Projects & Achievements Gallery
-                    </h1>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                        A visual journey through my hardware prototypes, hackathon wins, and software deployments.
-                    </p>
-                </div>
 
-                {/* Masonry-style Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {galleryItems.map((item, index) => (
-                        <div
-                            key={index}
-                            className="group relative rounded-2xl overflow-hidden glass-card border border-white/10 aspect-video md:aspect-[4/5] lg:aspect-square flex items-center justify-center cursor-pointer"
-                        >
-                            {item.imageUrl ? (
+                    {/* Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        {galleryItems.map((item, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, scale: 0.96 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4, delay: (i % 6) * 0.06 }}
+                                whileHover={{ y: -6 }}
+                                className="group relative rounded-2xl overflow-hidden border border-white/8 aspect-[4/3] cursor-pointer"
+                            >
                                 <img
-                                    src={item.imageUrl}
+                                    src={item.imageUrl!}
                                     alt={item.title}
-                                    className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700"
+                                    className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-50 group-hover:scale-105 transition-all duration-500"
                                 />
-                            ) : null}
-
-                            {/* Hover Overlay */}
-                            <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/10 backdrop-blur-md border border-white/5 text-[10px] font-bold uppercase tracking-wider text-primary mb-2">
-                                    {item.category}
+                                {/* Always-visible category chip */}
+                                <div className="absolute top-3 left-3">
+                                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[10px] font-bold uppercase tracking-wider backdrop-blur-md ${CATEGORY_COLORS[item.category] ?? "bg-white/10 text-white border-white/20"}`}>
+                                        <Layers className="w-3 h-3" /> {item.category}
+                                    </span>
                                 </div>
-                                <h3 className="text-lg font-bold text-[#f8fafc] mb-1">{item.title}</h3>
-                                <div className="flex items-center justify-between text-xs font-medium text-[#94a3b8]">
-                                    <span>{item.subtitle}</span>
-                                    <span>{item.date}</span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                                {/* Hover slide-up overlay */}
+                                <motion.div
+                                    className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/95 via-black/60 to-transparent"
+                                    initial={{ y: "100%", opacity: 0 }}
+                                    whileHover={{ y: 0, opacity: 1 }}
+                                    transition={{ duration: 0.25 }}
+                                >
+                                    <h3 className="text-base font-bold text-white leading-snug mb-1">{item.title}</h3>
+                                    <div className="flex justify-between text-xs text-[#94a3b8]">
+                                        <span>{item.subtitle}</span>
+                                        <span>{item.date}</span>
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </Container>
         </div>
