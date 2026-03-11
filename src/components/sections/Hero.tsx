@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { CircuitBackground } from "@/components/animations/CircuitBackground";
 import { ParticleField } from "@/components/animations/ParticleField";
@@ -54,7 +54,7 @@ function TypeWriter({ words }: { words: string[] }) {
 const socialLinks = [
     { href: "https://github.com/Prolayjit-B14", icon: Github, label: "GitHub" },
     { href: "https://www.linkedin.com/in/prolayjit-biswas", icon: Linkedin, label: "LinkedIn" },
-    { href: "https://devfolio.co/@pro_lay04", icon: ExternalLink, label: "DevFolio" },
+    { href: "https://x.com/pro_lay04", icon: ExternalLink, label: "Twitter/X" },
 ];
 
 export function Hero() {

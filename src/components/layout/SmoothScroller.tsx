@@ -15,14 +15,16 @@ export function SmoothScroller() {
             touchMultiplier: 2,
         });
 
-        // Sync with Framer Motion or just standard rAF
+        let rafId: number;
+
         function raf(time: number) {
             lenis.raf(time);
-            requestAnimationFrame(raf);
+            rafId = requestAnimationFrame(raf);
         }
-        requestAnimationFrame(raf);
+        rafId = requestAnimationFrame(raf);
 
         return () => {
+            cancelAnimationFrame(rafId);
             lenis.destroy();
         };
     }, []);

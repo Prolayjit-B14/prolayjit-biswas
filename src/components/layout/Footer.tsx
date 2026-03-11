@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Container } from "./Container";
-import { motion } from "framer-motion";
 import {
     Github, Linkedin, Twitter, Mail, MapPin,
     Phone, ExternalLink, Cpu, ArrowUpRight,
@@ -11,17 +10,19 @@ import {
 const LINKS = {
     explore: [
         { href: "/projects", label: "Projects" },
+        { href: "/hackathons", label: "Hackathons" },
         { href: "/hardware", label: "Hardware Lab" },
+        { href: "/gallery", label: "Gallery" },
+        { href: "/education", label: "Education" },
         { href: "/dashboard", label: "Dashboard" },
-        { href: "/terminal", label: "Terminal" },
         { href: "/blog", label: "Blog" },
     ],
     connect: [
         { href: "https://github.com/Prolayjit-B14", label: "GitHub", external: true },
         { href: "https://www.linkedin.com/in/prolayjit-biswas", label: "LinkedIn", external: true },
+        { href: "https://x.com/pro_lay04", label: "Twitter / X", external: true },
         { href: "https://devfolio.co/@pro_lay04", label: "DevFolio", external: true },
         { href: "https://dev.to/pro_lay04", label: "Dev.to", external: true },
-        { href: "https://medium.com/@prolayjitbiswas14112004", label: "Medium", external: true },
     ],
 };
 

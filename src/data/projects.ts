@@ -81,7 +81,6 @@ export const projects: Project[] = [
         ],
         technologies: ["HTML", "CSS", "JavaScript", "IoT Concepts"],
         githubUrl: "https://github.com/Prolayjit-B14",
-        demoUrl: "https://example.com",
     },
     {
         slug: "campus-connect",
