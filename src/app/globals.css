@@ -4,37 +4,43 @@
    DESIGN TOKENS — industry-grade token system
    ───────────────────────────────────────────────────────── */
 @theme {
-  /* Colours — dark (default) */
+  /* Colours — Vibrant Engineering Palette */
   --color-background:           #020617;
-  --color-foreground:           #f1f5f9;
-  --color-primary:              #00ff9f;
+  --color-foreground:           #f8fafc;
+  
+  /* Primary accents */
+  --color-primary:              #00ff9f; /* Electric Emerald */
   --color-primary-foreground:   #020617;
-  --color-secondary:            #3b82f6;
-  --color-secondary-foreground: #f1f5f9;
+  
+  --color-secondary:            #3b82f6; /* Cyber Blue */
+  --color-secondary-foreground: #f8fafc;
+  
+  /* Multi-accent spectrum */
+  --color-accent-blue:          #60a5fa;
+  --color-accent-emerald:       #34d399;
+  --color-accent-amber:         #fbbf24;
+  --color-accent-rose:          #fb7185;
+  --color-accent-purple:        #a78bfa;
+
   --color-muted:                #1e293b;
   --color-muted-foreground:     #94a3b8;
   --color-border:               #1e293b;
   --color-card:                 #0b1220;
-  --color-highlight:            #8b5cf6;
 
   /* Typography scale */
   --font-display: clamp(3rem, 7vw, 6rem);
   --font-heading: clamp(1.75rem, 4vw, 3.5rem);
 
-  /* Spacing — consistent section rhythm */
-  --space-section: 5rem;
-  --space-section-sm: 3.5rem;
-  --space-card: 1.5rem;
-
-  /* Easing curves */
+  /* Easing curves for premium feel */
   --ease-spring:  cubic-bezier(0.22, 1, 0.36, 1);
   --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Glow variants */
-  --glow-sm:  0 0 10px rgba(0, 255, 159, 0.4);
-  --glow-md:  0 0 20px rgba(0, 255, 159, 0.5), 0 0 40px rgba(0, 255, 159, 0.2);
-  --glow-lg:  0 0 30px rgba(0, 255, 159, 0.6), 0 0 60px rgba(0, 255, 159, 0.3);
+  /* Expanded Glow variants */
+  --glow-emerald: 0 0 20px rgba(16, 185, 129, 0.4);
+  --glow-blue:    0 0 20px rgba(59, 130, 246, 0.4);
+  --glow-amber:   0 0 20px rgba(245, 158, 11, 0.4);
+  --glow-rose:    0 0 20px rgba(244, 63, 94, 0.4);
 }
 
 /* ── Light mode overrides ──────────────────────────────────

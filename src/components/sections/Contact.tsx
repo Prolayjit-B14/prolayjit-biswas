@@ -56,9 +56,9 @@ export function Contact() {
     const inputCls = "w-full border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-[#4b5563] text-[#f8fafc] text-sm bg-[#0f172a]/80";
 
     return (
-        <section id="contact" className="relative py-12 lg:py-16 bg-background z-10 border-t border-white/5">
+        <section id="contact" className="relative h-screen bg-background z-10 border-t border-white/5 flex items-center overflow-hidden">
             <Container>
-                <div className="flex flex-col md:flex-row gap-14 items-start justify-between">
+                <div className="flex flex-col md:flex-row gap-14 items-center justify-between">
                     {/* Left Info */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -66,11 +66,8 @@ export function Contact() {
                         viewport={{ once: true }}
                         className="md:w-5/12"
                     >
-                        <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-bold text-primary uppercase tracking-widest mb-4">
-                            <Send className="h-3 w-3" /> Get In Touch
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-3 text-glow">
-                            Contact
+                        <h2 className="text-3xl md:text-6xl font-black tracking-tighter mb-8 text-white uppercase">
+                            Contact<span className="text-blue-500">.</span>
                         </h2>
 
                         <div className="space-y-5">

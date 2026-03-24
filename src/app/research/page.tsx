@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
+import { PageHero } from "@/components/layout/PageHero";
 import { BookOpen, Beaker, Zap, Microchip, Binary } from "lucide-react";
 
 const RESEARCH_PAPERS = [
@@ -25,34 +26,16 @@ const RESEARCH_PAPERS = [
 
 export default function ResearchPage() {
     return (
-        <main className="min-h-screen bg-[#020617] pt-24 pb-16">
+        <main className="min-h-screen bg-[#020617] pb-20">
+            <PageHero
+                badge="R&D Lab · Applied Science"
+                badgeIconName="BookOpen"
+                title="Research Ops"
+                description="Pushing the boundaries of hardware-software co-design through rigorous experimentation, logic synthesis, and edge intelligence research."
+                accentColor="violet"
+            />
+
             <Container>
-                {/* Hero Section */}
-                <div className="mb-20 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-bold uppercase tracking-widest mb-6"
-                    >
-                        <BookOpen className="w-3 h-3" /> Technical Exploration
-                    </motion.div>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
-                    >
-                        Research & Development
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-zinc-400 text-lg max-w-xl mx-auto leading-relaxed"
-                    >
-                        Pushing the boundaries of hardware systems through rigorous experimentation, logic synthesis, and edge intelligence.
-                    </motion.p>
-                </div>
 
                 <div className="space-y-12">
                     {RESEARCH_PAPERS.map((paper, idx) => (

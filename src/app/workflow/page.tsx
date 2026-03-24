@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
+import { PageHero } from "@/components/layout/PageHero";
 import { Search, PenTool, Cpu, Layers, Code, Cloud, CheckCircle, Rocket, ArrowRight } from "lucide-react";
 
 const WORKFLOW_STEPS = [
@@ -16,33 +17,16 @@ const WORKFLOW_STEPS = [
 
 export default function WorkflowPage() {
     return (
-        <main className="min-h-screen bg-[#020617] pt-24 pb-16">
+        <main className="min-h-screen bg-[#020617] pb-20">
+            <PageHero
+                badge="Lifecycle · Engineering Protocol"
+                badgeIconName="PenTool"
+                title="System Workflow"
+                description="A methodical approach to solving complex engineering problems, from raw silicon logic to cloud-connected hardware products."
+                accentColor="amber"
+            />
+
             <Container>
-                {/* Hero Section */}
-                <div className="mb-24 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-widest mb-6"
-                    >
-                        <PenTool className="w-3 h-3" /> System Lifecycle
-                    </motion.div>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
-                    >
-                        Engineering Workflow
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-zinc-400 text-lg max-w-xl mx-auto leading-relaxed"
-                    >
-                        A methodical approach to solving complex engineering problems, from raw silicon to cloud-connected products.
-                    </motion.p>
-                </div>
 
                 <div className="max-w-4xl mx-auto relative px-6 md:px-0">
                     {/* Vertical Connecting Line */}

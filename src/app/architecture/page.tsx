@@ -2,125 +2,103 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
+import { PageHero } from "@/components/layout/PageHero";
 import { Cpu, Cloud, Shield, Share2, Layers, Server, Database, Monitor } from "lucide-react";
 
 export default function ArchitecturePage() {
     return (
-        <main className="min-h-screen bg-[#020617] pt-24 pb-16">
+        <main className="min-h-screen bg-[#020617] pb-24 relative overflow-hidden">
+            <PageHero
+                badge="High-Fidelity · System Design"
+                badgeIconName="Share2"
+                title="System Architecture"
+                description="Orchestrating the deterministic flow between physical silicon logic and global cloud telemetry systems. Focused on resilient, low-latency edge computing."
+                accentColor="blue"
+            />
+            
             <Container>
-                {/* Hero Section */}
-                <div className="mb-16 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-6"
-                    >
-                        <Share2 className="w-3 h-3" /> System Design
-                    </motion.div>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
-                    >
-                        System Architecture
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-zinc-400 text-lg max-w-2xl mx-auto leading-relaxed"
-                    >
-                        Designing scalable hardware-software systems with deep integration from edge silicon to cloud dashboards.
-                    </motion.p>
-                </div>
 
-                <div className="grid grid-cols-1 gap-12 lg:gap-20">
+                <div className="grid grid-cols-1 gap-32">
                     
                     {/* Section 1: IoT Architecture */}
                     <section>
-                        <div className="flex items-center gap-3 mb-8">
-                            <Layers className="w-6 h-6 text-emerald-400" />
-                            <h2 className="text-2xl font-bold text-white tracking-tight text-glow">
-                                01 — IoT Architecture
-                            </h2>
+                        <div className="flex items-center justify-between mb-12 border-b border-white/5 pb-8">
+                            <div className="flex items-center gap-4">
+                                <div className="h-12 w-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                                    <Layers className="w-6 h-6 text-emerald-400" />
+                                </div>
+                                <div>
+                                    <h2 className="text-2xl font-black text-white tracking-tight uppercase">
+                                        IoT Stack <span className="text-zinc-500">Hierarchy</span>
+                                    </h2>
+                                    <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">End-to-End Data Lifecycle</p>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div className="bg-[#0b1220] border border-white/10 rounded-3xl p-8 lg:p-12 overflow-hidden relative group">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
-                            
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-                                <ArchCard step="01" title="Sensor Layer" items={["Analog Sensors", "Calibration", "I2C/SPI Bus"]} icon={Cpu} />
-                                <ArchCard step="02" title="Edge Compute" items={["ESP32 Dual-Core", "RTOS Tasks", "Data Filtering"]} icon={Cpu} />
-                                <ArchCard step="03" title="Communication" items={["MQTT Protocol", "WPA2 Security", "Low Latency"]} icon={Share2} />
-                                <ArchCard step="04" title="Cloud Backend" items={["Node.js Server", "Firebase Auth", "WebSockets"]} icon={Server} />
-                                <ArchCard step="05" title="Data Persistence" items={["Firestore DB", "Redis Cache", "Time-series Storage"]} icon={Database} />
-                                <ArchCard step="06" title="Frontend App" items={["Next.js 14", "Framer Motion", "Live Analytics"]} icon={Monitor} />
-                            </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <ArchCard step="PHASE 01" title="Sensor Layer" items={["BME280/SHT31 Sensors", "I2C 400kHz Bus", "Low-Pass Filtering"]} icon={Cpu} color="text-emerald-400" />
+                            <ArchCard step="PHASE 02" title="Edge Processor" items={["ESP32 Dual-Core (C++)", "FreeRTOS Scheduling", "Internal DAC Control"]} icon={Cpu} color="text-amber-400" />
+                            <ArchCard step="PHASE 03" title="Telemetry" items={["MQTT Over TLS 1.2", "QoS 1 Deliverability", "Heartbeat Monitor"]} icon={Share2} color="text-blue-400" />
+                            <ArchCard step="PHASE 04" title="Ingress Layer" items={["Node.js / Express", "Firebase Admin SDK", "JWT Authentication"]} icon={Server} color="text-violet-400" />
+                            <ArchCard step="PHASE 05" title="Data Store" items={["Firestore DB Cache", "Real-time State Tree", "TimeSeries Analytics"]} icon={Database} color="text-rose-400" />
+                            <ArchCard step="PHASE 06" title="Control Surface" items={["Next.js Responsive UI", "WebSocket Streams", "Device Shadow Sync"]} icon={Monitor} color="text-emerald-400" />
                         </div>
                     </section>
 
                     {/* Section 2: Embedded System Architecture */}
                     <section>
-                        <div className="flex items-center gap-3 mb-8">
-                            <Cpu className="w-6 h-6 text-blue-400" />
-                            <h2 className="text-2xl font-bold text-white tracking-tight text-glow">
-                                02 — Embedded System Flow
-                            </h2>
-                        </div>
-                        
-                        <div className="bg-[#0b1220] border border-white/10 rounded-3xl p-8 overflow-hidden">
-                            <div className="flex flex-col md:flex-row items-center justify-between gap-4 max-w-4xl mx-auto text-center font-mono text-sm">
-                                <FlowItem label="Sensor" bg="bg-blue-500/10" border="border-blue-500/30" text="text-blue-400" />
-                                <FlowArrow />
-                                <FlowItem label="ADC" bg="bg-emerald-500/10" border="border-emerald-500/30" text="text-emerald-400" />
-                                <FlowArrow />
-                                <FlowItem label="MCU (C++)" bg="bg-violet-500/10" border="border-violet-500/30" text="text-violet-400" />
-                                <FlowArrow />
-                                <FlowItem label="Firmware" bg="bg-amber-500/10" border="border-amber-500/30" text="text-amber-400" />
-                                <FlowArrow />
-                                <FlowItem label="Output" bg="bg-rose-500/10" border="border-rose-500/30" text="text-rose-400" />
+                        <div className="flex items-center gap-4 mb-12">
+                            <div className="h-12 w-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                                <Cpu className="w-6 h-6 text-blue-400" />
+                            </div>
+                            <div>
+                                <h2 className="text-2xl font-black text-white tracking-tight uppercase">
+                                    Logic <span className="text-zinc-500">Pipeline</span>
+                                </h2>
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Hardware-in-the-Loop Logic</p>
                             </div>
                         </div>
-                    </section>
-
-                    {/* Section 3: Cloud Integration Pipeline */}
-                    <section>
-                        <div className="flex items-center gap-3 mb-8">
-                            <Cloud className="w-6 h-6 text-violet-400" />
-                            <h2 className="text-2xl font-bold text-white tracking-tight text-glow">
-                                03 — Cloud Integration Pipeline
-                            </h2>
-                        </div>
                         
-                        <div className="bg-[#0b1220] border border-white/10 rounded-3xl p-8 lg:p-12">
-                            <div className="relative h-64 flex items-center justify-center">
-                                {/* SVG glowing lines would go here, using a simpler visual grid for now */}
-                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 w-full h-full font-bold text-[10px] uppercase tracking-tighter">
-                                    <PipelineNode icon={Cpu} name="ESP32" />
-                                    <PipelineNode icon={Share2} name="WiFi" />
-                                    <PipelineNode icon={Share2} name="MQTT Broker" />
-                                    <PipelineNode icon={Server} name="API Gateway" />
-                                    <PipelineNode icon={Database} name="DB / Cloud" />
-                                    <PipelineNode icon={Monitor} name="Dashboard" color="text-emerald-400" />
+                        <div className="relative group">
+                            <div className="absolute inset-0 bg-blue-600/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <div className="relative bg-[#0b1220]/50 border border-white/10 rounded-[40px] p-12 overflow-hidden backdrop-blur-md">
+                                <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-5xl mx-auto">
+                                    <FlowItem label="Sensor" bg="bg-blue-600/10" border="border-blue-500/20" text="text-blue-400" />
+                                    <FlowArrow />
+                                    <FlowItem label="Op-Amp/ADC" bg="bg-emerald-600/10" border="border-emerald-500/20" text="text-emerald-400" />
+                                    <FlowArrow />
+                                    <FlowItem label="Decision Engine" bg="bg-violet-600/10" border="border-violet-500/20" text="text-violet-400" />
+                                    <FlowArrow />
+                                    <FlowItem label="Firmware (C++)" bg="bg-amber-600/10" border="border-amber-500/20" text="text-amber-400" />
+                                    <FlowArrow />
+                                    <FlowItem label="Actionable Output" bg="bg-rose-600/10" border="border-rose-500/20" text="text-rose-400" />
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Section 4: Security Layer */}
-                    <section>
-                        <div className="flex items-center gap-3 mb-8">
-                            <Shield className="w-6 h-6 text-rose-400" />
-                            <h2 className="text-2xl font-bold text-white tracking-tight text-glow">
-                                04 — Security & Encryption
-                            </h2>
-                        </div>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <SecurityFeature title="Hardware Auth" desc="Device-unique keys stored in secure storage partitions." />
-                            <SecurityFeature title="API Security" desc="Bearer tokens and strict CORS policies on Node.js middleware." />
-                            <SecurityFeature title="Encryption" desc="TLS 1.2 for all MQTT and HTTPS cloud communication." />
+                    {/* Section 3: Data Security */}
+                    <section className="mb-24">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <div className="h-12 w-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-8">
+                                    <Shield className="w-6 h-6 text-rose-400" />
+                                </div>
+                                <h2 className="text-3xl font-black text-white tracking-tighter uppercase mb-6">
+                                    Hardened <br />
+                                    <span className="text-rose-500">Security Layer</span>
+                                </h2>
+                                <p className="text-zinc-500 text-sm font-medium leading-relaxed max-w-sm">
+                                    Ensuring full integrity from the hardware level up to the user interface with end-to-end encryption protocols.
+                                </p>
+                            </div>
+                            
+                            <div className="space-y-4">
+                                <SecurityFeature title="Hardware Trust" desc="Device authentication via SHA-256 signatures and hardware encryption blocks on MCU." />
+                                <SecurityFeature title="Protocol Security" desc="TLS 1.2/1.3 encrypted tunnels for all MQTT and cloud-side API communications." />
+                                <SecurityFeature title="IAM & Access" desc="Role-based access control with Firebase Auth and isolated API endpoints." />
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -129,18 +107,18 @@ export default function ArchitecturePage() {
     );
 }
 
-function ArchCard({ step, title, items, icon: Icon }: any) {
+function ArchCard({ step, title, items, icon: Icon, color = "text-emerald-400" }: any) {
     return (
-        <div className="bg-white/5 border border-white/5 rounded-2xl p-6 hover:bg-white/[0.08] transition-all hover:border-white/20">
-            <div className="flex items-center justify-between mb-4">
-                <span className="text-[10px] font-black text-emerald-400 uppercase tracking-[0.2em]">{step}</span>
-                <Icon className="w-5 h-5 text-emerald-500/50" />
+        <div className="bg-[#0b1220]/50 border border-white/10 rounded-3xl p-8 hover:bg-white/[0.04] transition-all hover:border-white/20 group">
+            <div className="flex items-center justify-between mb-8">
+                <span className={`text-[9px] font-black uppercase tracking-[0.3em] ${color}`}>{step}</span>
+                <Icon className={`w-5 h-5 ${color} opacity-40 group-hover:opacity-100 transition-opacity`} />
             </div>
-            <h3 className="text-white font-bold mb-3">{title}</h3>
-            <ul className="space-y-1.5">
+            <h3 className="text-white text-xl font-black mb-4 uppercase tracking-tighter">{title}</h3>
+            <ul className="space-y-3">
                 {items.map((it: string) => (
-                    <li key={it} className="text-xs text-zinc-400 flex items-center gap-2">
-                        <div className="w-1 h-1 rounded-full bg-emerald-500/50" /> {it}
+                    <li key={it} className="text-xs text-zinc-500 flex items-center gap-3">
+                        <div className={`w-1 h-1 rounded-full ${color.replace('text-', 'bg-')} opacity-40`} /> {it}
                     </li>
                 ))}
             </ul>
@@ -150,32 +128,27 @@ function ArchCard({ step, title, items, icon: Icon }: any) {
 
 function FlowItem({ label, bg, border, text }: any) {
     return (
-        <div className={`px-4 py-2.5 rounded-xl border ${bg} ${border} ${text} font-bold min-w-[100px] shadow-lg shadow-black/20`}>
+        <div className={`px-6 py-4 rounded-2xl border ${bg} ${border} ${text} font-black uppercase text-[10px] tracking-widest min-w-[140px] text-center shadow-xl shadow-black/40`}>
             {label}
         </div>
     );
 }
 
 function FlowArrow() {
-    return <div className="hidden md:block text-zinc-600 font-bold">→</div>;
-}
-
-function PipelineNode({ icon: Icon, name, color = "text-white" }: any) {
     return (
-        <div className="flex flex-col items-center justify-center gap-3 bg-white/5 border border-white/10 rounded-2xl p-4 group hover:border-white/30 transition-all">
-            <Icon className={`w-6 h-6 ${color} opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-transform`} />
-            <span className={`text-[10px] font-bold text-center ${color}`}>{name}</span>
+        <div className="hidden md:flex items-center justify-center h-px w-8 bg-zinc-800 relative">
+            <div className="absolute right-0 w-1.5 h-1.5 border-r border-t border-zinc-800 rotate-45 -translate-y-px" />
         </div>
     );
 }
 
 function SecurityFeature({ title, desc }: any) {
     return (
-        <div className="p-6 bg-[#0b1220] border border-white/10 rounded-2xl hover:border-rose-500/30 transition-colors">
-            <h3 className="text-white font-bold mb-2 flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-rose-500" /> {title}
+        <div className="p-8 bg-[#0b1220]/50 border border-white/10 rounded-3xl hover:border-rose-500/30 transition-all group">
+            <h3 className="text-white font-black text-sm mb-3 flex items-center gap-3 uppercase tracking-tighter">
+                <div className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" /> {title}
             </h3>
-            <p className="text-xs text-zinc-400 leading-relaxed">{desc}</p>
+            <p className="text-xs text-zinc-500 leading-relaxed font-medium">{desc}</p>
         </div>
     );
 }

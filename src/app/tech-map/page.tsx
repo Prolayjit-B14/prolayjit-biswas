@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
+import { PageHero } from "@/components/layout/PageHero";
 import { Cpu, Globe, Cloud, Wrench as Tool, Binary, Code2, Zap, Settings } from "lucide-react";
 
 // Using Wrench for the tool icon
@@ -47,34 +48,16 @@ const TECH_CATEGORIES = [
 
 export default function TechMapPage() {
     return (
-        <main className="min-h-screen bg-[#020617] pt-24 pb-16">
+        <main className="min-h-screen bg-[#020617] pb-20">
+            <PageHero
+                badge="Topology · Integrated Stack"
+                badgeIconName="Zap"
+                title="Technology Map"
+                description="A topological visualization of my cross-disciplinary engineering stack, bridging the gap between raw silicon and scalable cloud infrastructure."
+                accentColor="emerald"
+            />
+
             <Container>
-                {/* Hero Section */}
-                <div className="mb-20 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-6"
-                    >
-                        <Zap className="w-3 h-3" /> Toolset Topological Map
-                    </motion.div>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
-                    >
-                        Technology Map
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-zinc-400 text-lg max-w-xl mx-auto leading-relaxed"
-                    >
-                        A comprehensive visualization of my cross-disciplinary engineering stack, bridging the gap between hardware and software.
-                    </motion.p>
-                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {TECH_CATEGORIES.map((cat, idx) => (

@@ -7,88 +7,105 @@ import { cn } from "@/lib/utils";
 
 const CATEGORIES = [
     {
-        title: "Hardware",
+        title: "Systems Hardware",
         icon: Cpu,
-        color: "text-blue-400 border-blue-400/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]",
-        skills: ["ESP32", "STM32", "Arduino", "Raspberry Pi", "FPGA", "Verilog", "VHDL", "PCB Design", "Soldering", "Oscilloscopes"]
+        color: "text-rose-400",
+        glow: "shadow-[0_0_20px_rgba(251,113,133,0.3)]",
+        bg: "bg-rose-500/5 border-rose-500/20",
+        skills: ["ESP32/STM32", "FPGA Verilog", "PCB Design", "RTOS", "VLSI RTL", "Altium/KiCAD"]
     },
     {
-        title: "Software",
-        icon: Code2,
-        color: "text-emerald-400 border-emerald-400/30 hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]",
-        skills: ["C/C++", "Python", "JavaScript", "TypeScript", "Next.js", "React", "Node.js", "Tailwind CSS", "SQL", "MongoDB"]
+        title: "IoT & Cloud",
+        icon: Layers,
+        color: "text-blue-400",
+        glow: "shadow-[0_0_20px_rgba(96,165,250,0.3)]",
+        bg: "bg-blue-500/5 border-blue-500/20",
+        skills: ["MQTT/HTTP", "Node.js", "Firebase", "Next.js", "TypeScript", "Docker"]
     },
     {
-        title: "AI",
+        title: "Intelligence",
         icon: BrainCircuit,
-        color: "text-purple-400 border-purple-400/30 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]",
-        skills: ["TensorFlow", "PyTorch", "OpenCV", "Machine Learning", "NLP", "Gemini API", "Computer Vision", "Data Analysis"]
+        color: "text-emerald-400",
+        glow: "shadow-[0_0_20px_rgba(52,211,153,0.3)]",
+        bg: "bg-emerald-500/5 border-emerald-500/20",
+        skills: ["TensorFlow", "OpenCV", "PyTorch", "NLP", "Gemini AI", "Computer Vision"]
     },
     {
-        title: "Tools",
+        title: "Engineering Tools",
         icon: Wrench,
-        color: "text-amber-400 border-amber-400/30 hover:shadow-[0_0_15px_rgba(245,158,11,0.3)]",
-        skills: ["KiCAD", "Altium", "MATLAB", "Git/GitHub", "Docker", "VS Code", "Figma", "Linux", "Postman", "Vercel"]
+        color: "text-amber-400",
+        glow: "shadow-[0_0_20px_rgba(251,191,36,0.3)]",
+        bg: "bg-amber-500/5 border-amber-500/20",
+        skills: ["Git/GitHub", "Linux/Bash", "MATLAB", "Postman", "Vercel", "Figma"]
     }
 ];
 
 export function Skills() {
     return (
-        <section className="relative py-12 lg:py-16 bg-[#02050a] border-y border-white/5" id="skills">
-            <Container>
-                <div className="flex flex-col items-center text-center mb-10">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white">
-                        Technical Skills
-                    </h2>
-                </div>
+        <section className="relative h-screen min-h-[700px] bg-[#02050a] flex items-center overflow-hidden py-20" id="skills">
+            {/* Background Ambient Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.03)_0,transparent_70%)] pointer-events-none" />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    {CATEGORIES.map((category, index) => {
-                        const Icon = category.icon;
-                        return (
-                            <motion.div
-                                key={category.title}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="flex flex-col gap-4"
-                            >
-                                <div className="flex items-center gap-2 mb-2">
-                                    <Icon className={cn("w-6 h-6", category.color.split(' ')[0])} />
-                                    <h3 className="text-xl font-bold text-white tracking-wide">{category.title}</h3>
-                                </div>
-                                
-                                <motion.div 
-                                    variants={{
-                                        hidden: {},
-                                        show: { transition: { staggerChildren: 0.12 } }
-                                    }}
-                                    initial="hidden"
-                                    whileInView="show"
+            <Container className="relative z-10">
+                <div className="max-w-4xl mx-auto">
+                    <div className="flex flex-col items-center text-center mb-16">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-[0.3em] mb-4"
+                        >
+                            Technical Intelligence
+                        </motion.div>
+                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white leading-none">
+                            CORE <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">STACK</span>
+                        </h2>
+                        <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full" />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                        {CATEGORIES.map((category, index) => {
+                            const Icon = category.icon;
+                            return (
+                                <motion.div
+                                    key={category.title}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className="flex flex-wrap gap-2"
+                                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                                    className={cn(
+                                        "group relative p-6 rounded-[2rem] border transition-all duration-500 overflow-hidden",
+                                        category.bg,
+                                        "hover:bg-opacity-10 hover:shadow-2xl",
+                                        category.glow
+                                    )}
                                 >
-                                    {category.skills.map(skill => (
-                                        <motion.div
-                                            key={skill}
-                                            variants={{
-                                                hidden: { opacity: 0, y: 20 },
-                                                show: { opacity: 1, y: 0 }
-                                            }}
-                                            whileHover={{ scale: 1.04, y: -5, transition: { type: "spring", stiffness: 200 } }}
-                                            className={cn(
-                                                "px-4 py-2 text-sm font-medium rounded-full border bg-white/5 backdrop-blur-sm text-zinc-300 shadow-sm",
-                                                category.color
-                                            )}
-                                        >
-                                            {skill}
-                                        </motion.div>
-                                    ))}
+                                    {/* Decorative Icon Background */}
+                                    <Icon className="absolute -bottom-4 -right-4 w-24 h-24 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity rotate-12" />
+
+                                    <div className="relative z-10">
+                                        <div className="flex items-center gap-3 mb-6">
+                                            <div className={cn("p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform shadow-lg", category.color)}>
+                                                <Icon className="w-5 h-5" />
+                                            </div>
+                                            <h3 className="text-lg font-black text-white tracking-wider uppercase">{category.title}</h3>
+                                        </div>
+                                        
+                                        <div className="flex flex-wrap gap-2">
+                                            {category.skills.map(skill => (
+                                                <motion.span
+                                                    key={skill}
+                                                    whileHover={{ scale: 1.05, x: 2 }}
+                                                    className="px-3 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-lg bg-black/40 border border-white/5 text-zinc-400 hover:text-white hover:border-white/20 transition-all cursor-default"
+                                                >
+                                                    {skill}
+                                                </motion.span>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </motion.div>
-                            </motion.div>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
                 </div>
             </Container>
         </section>

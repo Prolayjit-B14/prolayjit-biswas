@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
+import { cn } from "@/lib/utils";
 import { Briefcase, GraduationCap, Trophy, LucideIcon } from "lucide-react";
 
 type TimelineEvent = {
@@ -22,18 +23,7 @@ const events: TimelineEvent[] = [
         year: "2023 – Present",
         title: "B.Tech Electronics (VLSI)",
         subtitle: "MAKAUT, Kolkata",
-        description: "Specializing in embedded systems, PCB design, VLSI circuitry, and IoT development.",
-        icon: GraduationCap,
-        color: "text-primary",
-        bg: "bg-primary/10",
-        border: "border-primary/20",
-        type: "education",
-    },
-    {
-        year: "2021 – 2023",
-        title: "Higher Secondary (Science)",
-        subtitle: "Physics, Chemistry, Mathematics",
-        description: "Strong foundation in electronics and mathematics — the bedrock of hardware engineering.",
+        description: "Focusing on hardware architectures, signal processing, and integrated cloud telemetry.",
         icon: GraduationCap,
         color: "text-blue-400",
         bg: "bg-blue-500/10",
@@ -42,115 +32,135 @@ const events: TimelineEvent[] = [
     },
     {
         year: "Feb 2025",
-        title: "MAKATHON'25",
-        subtitle: "Hackathon Winner",
-        description: "Won MAKAUT's annual hackathon building an IoT environmental monitoring system with cloud integration.",
+        title: "MAKATHON '25 winner",
+        subtitle: "Industrial IoT Hackathon",
+        description: "Engineered a scalable environmental analytics node with real-time industrial telemetry.",
         icon: Trophy,
         color: "text-rose-400",
         bg: "bg-rose-500/10",
         border: "border-rose-500/20",
         type: "experience",
-        achievement: "1st Prize",
+        achievement: "1st Position",
     },
     {
         year: "Aug 2024",
-        title: "Smart India Hackathon",
-        subtitle: "National Level",
-        description: "Designed a wearable safety device with BLE & GPS from PCB schematic to working prototype.",
+        title: "SIH National Finalist",
+        subtitle: "Smart India Hackathon",
+        description: "Developed a wearable safety interface with embedded firmware and localized GSM uplink.",
         icon: Trophy,
-        color: "text-yellow-400",
-        bg: "bg-yellow-500/10",
-        border: "border-yellow-500/20",
+        color: "text-emerald-400",
+        bg: "bg-emerald-500/10",
+        border: "border-emerald-500/20",
         type: "experience",
         achievement: "National Finalist",
     },
     {
         year: "Mar 2024",
-        title: "SargamAI Frontend Developer",
-        subtitle: "AI Platform",
-        description: "Built the full frontend and UI of an AI-powered platform using Next.js and Gemini.",
+        title: "SargamAI Core Engineering",
+        subtitle: "AI Platform Infrastructure",
+        description: "Architected modern frontend systems for large-scale AI service orchestration.",
         icon: Briefcase,
-        color: "text-purple-400",
-        bg: "bg-purple-500/10",
-        border: "border-purple-500/20",
+        color: "text-amber-400",
+        bg: "bg-amber-500/10",
+        border: "border-amber-500/20",
         type: "experience",
     },
 ];
 
 export function Timeline() {
-    const educationEvents = events.filter(e => e.type === "education");
-    const experienceEvents = events.filter(e => e.type === "experience");
-
     return (
-        <section id="timeline" className="relative py-12 lg:py-16 bg-background border-t border-white/5">
-            <Container>
-                {/* Header */}
-                <div className="flex flex-col mb-10 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white">
-                        Experience
+        <section id="experience" className="relative h-screen min-h-[750px] bg-[#02050a] flex items-center overflow-hidden py-20">
+            {/* Background Narrative */}
+            <div className="absolute top-0 right-0 p-20 opacity-[0.02] pointer-events-none select-none overflow-hidden h-full rotate-12">
+                <span className="text-[200px] font-black leading-none text-white whitespace-nowrap">TIMELINE_LOG_0x4F</span>
+            </div>
+
+            <Container className="h-full flex flex-col justify-center">
+                <div className="flex flex-col items-center mb-16 text-center shrink-0">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.4em] mb-4"
+                    >
+                        Succession Plan
+                    </motion.div>
+                    <h2 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter uppercase leading-none">
+                        Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-rose-400">Milestones</span>
                     </h2>
+                    <div className="h-1 w-24 bg-gradient-to-r from-blue-500 to-rose-500 rounded-full" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                    {/* Education Column */}
-                    <div>
-                        <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                            <GraduationCap className="w-5 h-5 text-primary" /> Education
-                        </h3>
-                        <div className="flex flex-col gap-4">
-                            {educationEvents.map((event, i) => (
-                                <TimelineCard key={i} event={event} index={i} />
-                            ))}
-                        </div>
+                <div className="relative max-w-5xl mx-auto w-full px-4">
+                    {/* Pulsing Vertical Stem */}
+                    <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/0 via-white/10 to-rose-500/0 -translate-x-1/2 hidden md:block">
+                        <motion.div 
+                            animate={{ opacity: [0.2, 0.5, 0.2], scaleY: [0.8, 1, 0.8] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            className="h-full w-full bg-blue-500/50 blur-sm"
+                        />
                     </div>
 
-                    {/* Experience Column */}
-                    <div>
-                        <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                            <Briefcase className="w-5 h-5 text-primary" /> Experience & Achievements
-                        </h3>
-                        <div className="flex flex-col gap-4">
-                            {experienceEvents.map((event, i) => (
-                                <TimelineCard key={i} event={event} index={i} />
-                            ))}
-                        </div>
+                    <div className="space-y-12">
+                        {events.map((event, i) => (
+                            <div key={i} className={`relative flex flex-col md:flex-row items-center gap-12 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                                {/* Chromatic Connector Indicator */}
+                                <motion.div 
+                                    whileInView={{ scale: [0, 1.2, 1] }}
+                                    className={`absolute left-1/2 w-4 h-4 rounded-full z-20 -translate-x-1/2 hidden md:flex items-center justify-center border-4 border-[#02050a] ${event.bg.replace('/10', '')} shadow-lg`}
+                                >
+                                    <div className={`w-1.5 h-1.5 rounded-full bg-white opacity-40 animate-ping`} />
+                                </motion.div>
+
+                                {/* Event Card */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: i % 2 === 0 ? 30 : -30 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    className="w-full md:w-[45%]"
+                                >
+                                    <div className={cn(
+                                        "group relative p-8 rounded-[2.5rem] border bg-[#0b1220]/40 backdrop-blur-2xl transition-all duration-500 overflow-hidden",
+                                        "hover:bg-[#0b1220]/60",
+                                        event.border.replace('/20', '/10'),
+                                        `hover:${event.border.replace('/20', '/40')}`
+                                    )}>
+                                        <div className="flex items-center justify-between mb-6">
+                                            <div className={cn("p-3 rounded-2xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform", event.color)}>
+                                                <event.icon className="w-5 h-5" />
+                                            </div>
+                                            <span className="text-[10px] font-black text-zinc-600 uppercase tracking-widest bg-white/5 px-3 py-1 rounded-full">{event.year}</span>
+                                        </div>
+
+                                        <div className="space-y-2">
+                                            <h4 className="text-xl font-black text-white leading-tight uppercase tracking-tighter">
+                                                {event.title}
+                                            </h4>
+                                            <p className={cn("text-[11px] font-black uppercase tracking-widest", event.color)}>
+                                                {event.subtitle}
+                                            </p>
+                                            <p className="text-xs text-zinc-500 leading-relaxed font-medium">
+                                                {event.description}
+                                            </p>
+
+                                            {event.achievement && (
+                                                <div className={cn("mt-6 flex items-center gap-2.5 px-4 py-2 rounded-xl border w-fit", event.bg, event.border)}>
+                                                    <Trophy className={cn("w-3 h-3", event.color)} />
+                                                    <span className={cn("text-[10px] font-black uppercase tracking-widest", event.color)}>
+                                                        {event.achievement}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Spacing Component */}
+                                <div className="hidden md:block w-[45%]" />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </Container>
         </section>
-    );
-}
-
-function TimelineCard({ event, index }: { event: TimelineEvent, index: number }) {
-    const Icon = event.icon;
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
-            className={`flex flex-col p-5 rounded-2xl border ${event.border} bg-[#0b1220] hover:bg-[#10192b] transition-colors`}
-        >
-            <div className="flex items-center justify-between mb-2">
-                <span className={`text-[10px] font-bold uppercase tracking-widest ${event.color}`}>
-                    {event.year}
-                </span>
-                {event.achievement && (
-                    <span className={`px-2 py-0.5 rounded border border-white/10 text-[9px] uppercase font-bold bg-white/5 ${event.color}`}>
-                        {event.achievement}
-                    </span>
-                )}
-            </div>
-            
-            <h4 className="font-bold text-white text-sm md:text-base mb-1">
-                {event.title}
-            </h4>
-            <p className="text-zinc-400 text-xs font-semibold mb-3">
-                {event.subtitle}
-            </p>
-            <p className="text-zinc-500 text-xs leading-relaxed">
-                {event.description}
-            </p>
-        </motion.div>
     );
 }
