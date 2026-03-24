@@ -56,7 +56,7 @@ export function Contact() {
     const inputCls = "w-full border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-[#4b5563] text-[#f8fafc] text-sm bg-[#0f172a]/80";
 
     return (
-        <section id="contact" className="relative py-16 md:py-24 bg-background z-10 border-t border-white/5">
+        <section id="contact" className="relative py-12 lg:py-16 bg-background z-10 border-t border-white/5">
             <Container>
                 <div className="flex flex-col md:flex-row gap-14 items-start justify-between">
                     {/* Left Info */}

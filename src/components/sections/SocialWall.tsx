@@ -157,7 +157,7 @@ export function SocialWall({ posts }: { posts: BlogPost[] }) {
     const hasBlogs = posts && posts.length > 0;
 
     return (
-        <section id="social" className="relative py-14 bg-[#030712] border-t border-white/5">
+        <section className="relative py-12 lg:py-16 bg-[#02050a] border-y border-white/5" id="writing">
             <Container>
                 {/* Header */}
                 <motion.div

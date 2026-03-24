@@ -34,16 +34,15 @@ const CATEGORIES = [
 
 export function Skills() {
     return (
-        <section className="relative py-20 bg-[#02050a] border-y border-white/5" id="skills">
+        <section className="relative py-12 lg:py-16 bg-[#02050a] border-y border-white/5" id="skills">
             <Container>
-                <div className="flex flex-col items-center text-center mb-16">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary w-fit uppercase mb-4 tracking-wider">
-                        <Layers className="h-4 w-4" />
-                        Tech Stack
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-4 text-white">
+                <div className="flex flex-col items-center text-center mb-10">
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white">
                         Skills & Technologies
                     </h2>
+                    <p className="text-zinc-400 text-sm md:text-base max-w-xl">
+                        A rigorous stack of modern languages and legacy engineering tools.
+                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

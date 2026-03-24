@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
-import { Briefcase, GraduationCap, Trophy, Zap, LucideIcon } from "lucide-react";
+import { Briefcase, GraduationCap, Trophy, LucideIcon } from "lucide-react";
 
 type TimelineEvent = {
     year: string;
@@ -13,25 +13,11 @@ type TimelineEvent = {
     color: string;
     bg: string;
     border: string;
-    dot: string;
-    side: "left" | "right";
     achievement?: string;
-    link?: string;
+    type: "education" | "experience";
 };
 
 const events: TimelineEvent[] = [
-    {
-        year: "2021 – 2023",
-        title: "Higher Secondary (Science)",
-        subtitle: "Physics, Chemistry, Mathematics",
-        description: "Strong foundation in electronics and mathematics — the bedrock of hardware engineering.",
-        icon: GraduationCap,
-        color: "text-blue-400",
-        bg: "bg-blue-500/10",
-        border: "border-blue-500/30",
-        dot: "bg-blue-400",
-        side: "right",
-    },
     {
         year: "2023 – Present",
         title: "B.Tech Electronics (VLSI)",
@@ -40,36 +26,19 @@ const events: TimelineEvent[] = [
         icon: GraduationCap,
         color: "text-primary",
         bg: "bg-primary/10",
-        border: "border-primary/30",
-        dot: "bg-primary",
-        side: "left",
+        border: "border-primary/20",
+        type: "education",
     },
     {
-        year: "Mar 2024",
-        title: "SargamAI — Frontend Developer",
-        subtitle: "AI Music Platform",
-        description: "Built the full frontend and UI/UX of an AI-powered platform for Indian classical music using Next.js and Gemini API.",
-        icon: Briefcase,
-        color: "text-purple-400",
-        bg: "bg-purple-500/10",
-        border: "border-purple-500/30",
-        dot: "bg-purple-400",
-        side: "right",
-        achievement: "Frontend Architecture",
-        link: "https://github.com/Prolayjit-B14"
-    },
-    {
-        year: "Aug 2024",
-        title: "Smart India Hackathon",
-        subtitle: "National Level — She Shield",
-        description: "Designed a wearable safety device with BLE & GPS from PCB schematic to working prototype in 36 hours.",
-        icon: Trophy,
-        color: "text-yellow-400",
-        bg: "bg-yellow-500/10",
-        border: "border-yellow-500/30",
-        dot: "bg-yellow-400",
-        side: "left",
-        achievement: "National Finalist",
+        year: "2021 – 2023",
+        title: "Higher Secondary (Science)",
+        subtitle: "Physics, Chemistry, Mathematics",
+        description: "Strong foundation in electronics and mathematics — the bedrock of hardware engineering.",
+        icon: GraduationCap,
+        color: "text-blue-400",
+        bg: "bg-blue-500/10",
+        border: "border-blue-500/20",
+        type: "education",
     },
     {
         year: "Feb 2025",
@@ -79,180 +48,112 @@ const events: TimelineEvent[] = [
         icon: Trophy,
         color: "text-rose-400",
         bg: "bg-rose-500/10",
-        border: "border-rose-500/30",
-        dot: "bg-rose-400",
-        side: "right",
-        achievement: "1st Prize Winner",
+        border: "border-rose-500/20",
+        type: "experience",
+        achievement: "1st Prize",
     },
     {
-        year: "2025 – Now",
-        title: "Portfolio & Open Source",
-        subtitle: "Building in public",
-        description: "Shipping this portfolio, contributing to hardware open source, and building smarter IoT systems every day.",
-        icon: Zap,
-        color: "text-cyan-400",
-        bg: "bg-cyan-500/10",
-        border: "border-cyan-500/30",
-        dot: "bg-cyan-400",
-        side: "left",
+        year: "Aug 2024",
+        title: "Smart India Hackathon",
+        subtitle: "National Level",
+        description: "Designed a wearable safety device with BLE & GPS from PCB schematic to working prototype.",
+        icon: Trophy,
+        color: "text-yellow-400",
+        bg: "bg-yellow-500/10",
+        border: "border-yellow-500/20",
+        type: "experience",
+        achievement: "National Finalist",
+    },
+    {
+        year: "Mar 2024",
+        title: "SargamAI Frontend Developer",
+        subtitle: "AI Platform",
+        description: "Built the full frontend and UI of an AI-powered platform using Next.js and Gemini.",
+        icon: Briefcase,
+        color: "text-purple-400",
+        bg: "bg-purple-500/10",
+        border: "border-purple-500/20",
+        type: "experience",
     },
 ];
 
 export function Timeline() {
-    return (
-        <section id="timeline" className="relative py-16 md:py-24 bg-background overflow-hidden border-t border-white/5">
-            {/* Background grid */}
-            <div className="absolute inset-0 grid-pattern opacity-[0.04] pointer-events-none" />
+    const educationEvents = events.filter(e => e.type === "education");
+    const experienceEvents = events.filter(e => e.type === "experience");
 
+    return (
+        <section id="timeline" className="relative py-12 lg:py-16 bg-background border-t border-white/5">
             <Container>
                 {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="text-center mb-16"
-                >
-                    <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary uppercase tracking-widest mb-4">
-                        <Trophy className="w-3 h-3" /> Journey
-                    </span>
-                    <h2 className="text-3xl md:text-4xl font-black tracking-tight text-glow mb-3">
-                        Career & Education
+                <div className="flex flex-col mb-10 text-center">
+                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white">
+                        Background
                     </h2>
-                    <p className="text-muted-foreground text-sm max-w-xl mx-auto">
-                        Key milestones across my academic path, hackathon wins, and engineering projects.
+                    <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto">
+                        Academic foundations and practical engineering experience.
                     </p>
-                </motion.div>
+                </div>
 
-                {/* Timeline */}
-                <div className="relative">
-                    {/* Central vertical line */}
-                    <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent -translate-x-1/2 hidden md:block" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                    {/* Education Column */}
+                    <div>
+                        <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                            <GraduationCap className="w-5 h-5 text-primary" /> Education
+                        </h3>
+                        <div className="flex flex-col gap-4">
+                            {educationEvents.map((event, i) => (
+                                <TimelineCard key={i} event={event} index={i} />
+                            ))}
+                        </div>
+                    </div>
 
-                    <div className="flex flex-col gap-0">
-                        {events.map((event, index) => {
-                            const Icon = event.icon;
-                            const isLeft = event.side === "left";
-
-                            return (
-                                <div key={event.title} className="relative flex items-center md:justify-center">
-                                    {/* Mobile — single column */}
-                                    <motion.div
-                                        initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: index * 0.07 }}
-                                        className="md:hidden flex gap-4 items-start py-4 w-full"
-                                    >
-                                        <div className={`flex-shrink-0 mt-1 p-2.5 rounded-xl ${event.bg} ${event.color} border ${event.border}`}>
-                                            <Icon className="w-4 h-4" />
-                                        </div>
-                                        <div className="flex flex-col gap-1 w-full">
-                                            <p className={`text-[10px] font-bold uppercase tracking-wider ${event.color}`}>{event.year}</p>
-                                            <h3 className="font-bold text-[#f8fafc] text-sm leading-tight">{event.title}</h3>
-                                            <p className="text-xs text-muted-foreground">{event.subtitle}</p>
-                                            <p className="text-xs text-[#6b7280] leading-relaxed mb-2">{event.description}</p>
-                                            
-                                            <div className="flex items-center gap-3">
-                                                {event.achievement && (
-                                                    <span className={`inline-flex items-center px-2 py-1 rounded bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider font-bold ${event.color}`}>
-                                                        {event.achievement}
-                                                    </span>
-                                                )}
-                                                {event.link && (
-                                                    <a href={event.link} target="_blank" rel="noreferrer" className="text-[10px] text-white/60 hover:text-primary transition-colors uppercase tracking-wider font-bold flex flex-row items-center gap-1">
-                                                        View <span className="text-lg leading-none">&rarr;</span>
-                                                    </a>
-                                                )}
-                                            </div>
-                                        </div>
-                                    </motion.div>
-
-                                    {/* Desktop — alternating layout */}
-                                    <div className="hidden md:grid grid-cols-2 w-full gap-8 py-5">
-                                        {/* Left slot */}
-                                        <div className="flex justify-end">
-                                            {isLeft && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, x: -40 }}
-                                                    whileInView={{ opacity: 1, x: 0 }}
-                                                    viewport={{ once: true }}
-                                                    transition={{ duration: 0.5, delay: index * 0.07 }}
-                                                    className={`glass-card border ${event.border} p-5 rounded-2xl max-w-sm w-full group hover:border-opacity-60 transition-all`}
-                                                >
-                                                    <div className="flex items-center gap-3 mb-3">
-                                                        <div className={`p-2 rounded-xl ${event.bg} ${event.color}`}>
-                                                            <Icon className="w-4 h-4" />
-                                                        </div>
-                                                        <p className={`text-[10px] font-bold uppercase tracking-wider ${event.color}`}>{event.year}</p>
-                                                    </div>
-                                                    <h3 className="font-bold text-[#f8fafc] text-sm leading-tight mb-1">{event.title}</h3>
-                                                    <p className="text-xs text-muted-foreground mb-2">{event.subtitle}</p>
-                                                    <p className="text-xs text-[#6b7280] leading-relaxed mb-3">{event.description}</p>
-                                                    
-                                                    <div className="flex items-center gap-3">
-                                                        {event.achievement && (
-                                                            <span className={`inline-flex items-center px-2 py-1 rounded bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider font-bold ${event.color}`}>
-                                                                {event.achievement}
-                                                            </span>
-                                                        )}
-                                                        {event.link && (
-                                                            <a href={event.link} target="_blank" rel="noreferrer" className="text-[10px] text-white/60 hover:text-primary transition-colors uppercase tracking-wider font-bold flex flex-row items-center gap-1">
-                                                                View <span className="text-lg leading-none">&rarr;</span>
-                                                            </a>
-                                                        )}
-                                                    </div>
-                                                </motion.div>
-                                            )}
-                                        </div>
-
-                                        {/* Center dot */}
-                                        <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center" style={{ top: "50%", marginTop: "-12px" }}>
-                                            <div className={`w-5 h-5 rounded-full ${event.dot} border-4 border-background animate-timeline-pulse shadow-[0_0_12px_currentColor] z-10`} />
-                                        </div>
-
-                                        {/* Right slot */}
-                                        <div className="flex justify-start">
-                                            {!isLeft && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, x: 40 }}
-                                                    whileInView={{ opacity: 1, x: 0 }}
-                                                    viewport={{ once: true }}
-                                                    transition={{ duration: 0.5, delay: index * 0.07 }}
-                                                    className={`glass-card border ${event.border} p-5 rounded-2xl max-w-sm w-full group hover:border-opacity-60 transition-all`}
-                                                >
-                                                    <div className="flex items-center gap-3 mb-3">
-                                                        <div className={`p-2 rounded-xl ${event.bg} ${event.color}`}>
-                                                            <Icon className="w-4 h-4" />
-                                                        </div>
-                                                        <p className={`text-[10px] font-bold uppercase tracking-wider ${event.color}`}>{event.year}</p>
-                                                    </div>
-                                                    <h3 className="font-bold text-[#f8fafc] text-sm leading-tight mb-1">{event.title}</h3>
-                                                    <p className="text-xs text-muted-foreground mb-2">{event.subtitle}</p>
-                                                    <p className="text-xs text-[#6b7280] leading-relaxed mb-3">{event.description}</p>
-                                                    
-                                                    <div className="flex items-center gap-3">
-                                                        {event.achievement && (
-                                                            <span className={`inline-flex items-center px-2 py-1 rounded bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider font-bold ${event.color}`}>
-                                                                {event.achievement}
-                                                            </span>
-                                                        )}
-                                                        {event.link && (
-                                                            <a href={event.link} target="_blank" rel="noreferrer" className="text-[10px] text-white/60 hover:text-primary transition-colors uppercase tracking-wider font-bold flex flex-row items-center gap-1">
-                                                                View <span className="text-lg leading-none">&rarr;</span>
-                                                            </a>
-                                                        )}
-                                                    </div>
-                                                </motion.div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
+                    {/* Experience Column */}
+                    <div>
+                        <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                            <Briefcase className="w-5 h-5 text-primary" /> Experience & Achievements
+                        </h3>
+                        <div className="flex flex-col gap-4">
+                            {experienceEvents.map((event, i) => (
+                                <TimelineCard key={i} event={event} index={i} />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </Container>
         </section>
+    );
+}
+
+function TimelineCard({ event, index }: { event: TimelineEvent, index: number }) {
+    const Icon = event.icon;
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+            className={`flex flex-col p-5 rounded-2xl border ${event.border} bg-[#0b1220] hover:bg-[#10192b] transition-colors`}
+        >
+            <div className="flex items-center justify-between mb-2">
+                <span className={`text-[10px] font-bold uppercase tracking-widest ${event.color}`}>
+                    {event.year}
+                </span>
+                {event.achievement && (
+                    <span className={`px-2 py-0.5 rounded border border-white/10 text-[9px] uppercase font-bold bg-white/5 ${event.color}`}>
+                        {event.achievement}
+                    </span>
+                )}
+            </div>
+            
+            <h4 className="font-bold text-white text-sm md:text-base mb-1">
+                {event.title}
+            </h4>
+            <p className="text-zinc-400 text-xs font-semibold mb-3">
+                {event.subtitle}
+            </p>
+            <p className="text-zinc-500 text-xs leading-relaxed">
+                {event.description}
+            </p>
+        </motion.div>
     );
 }
