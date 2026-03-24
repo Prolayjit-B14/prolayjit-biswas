@@ -1,7 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
-import { TrustBar } from "@/components/sections/TrustBar";
-import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
-import { HardwareProjects } from "@/components/sections/HardwareProjects";
+import { UnifiedProjects } from "@/components/sections/UnifiedProjects";
 import { DomainRoles } from "@/components/sections/DomainRoles";
 import { Skills } from "@/components/sections/Skills";
 import { Timeline } from "@/components/sections/Timeline";
@@ -18,31 +16,25 @@ export default async function Home() {
 
   return (
     <>
-      {/* 1. Hero Section (Above the fold) */}
+      {/* 1. Hero Section (Includes Trust & Social) */}
       <Hero />
 
-      {/* 2. Trust Badges (Immediate credibility) */}
-      <TrustBar />
+      {/* 2. Unified Engineering Portfolio (Tabbed) */}
+      <UnifiedProjects />
 
-      {/* 3. Featured Work (Software & IoT) */}
-      <FeaturedProjects />
-
-      {/* 4. Deep Hardware & VLSI Stack */}
-      <HardwareProjects />
-
-      {/* 4. Core Expertise (Grid) */}
+      {/* 3. Core Expertise (Grid) */}
       <DomainRoles />
 
-      {/* 5. Technical Skills (Categorized badges) */}
+      {/* 4. Technical Skills (Categorized badges) */}
       <Skills />
 
-      {/* 6. Experience Timeline */}
+      {/* 5. Experience Timeline */}
       <Timeline />
 
-      {/* 8. Community & Knowledge Sharing */}
+      {/* 6. Community & Knowledge Sharing */}
       <CommunitySection repos={topRepos} posts={topPosts} />
 
-      {/* 10. Contact CTA */}
+      {/* 7. Contact CTA */}
       <Contact />
     </>
   );

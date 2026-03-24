@@ -45,9 +45,6 @@ export function CommunitySection({ repos, posts }: { repos: any[]; posts: BlogPo
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-2 text-glow">
                         Community & Knowledge Sharing
                     </h2>
-                    <p className="text-zinc-400 text-sm md:text-base max-w-xl">
-                        Insights, experiments, and engineering learnings shared across platforms.
-                    </p>
                 </div>
 
                 <div className="max-w-5xl mx-auto flex flex-col gap-6">

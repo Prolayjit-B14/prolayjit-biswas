@@ -21,9 +21,6 @@ export function HardwareProjects() {
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
                         Hardware & VLSI
                     </h2>
-                    <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto">
-                        Bare-metal engineering, custom PCB design, and FPGA logic synthesis.
-                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

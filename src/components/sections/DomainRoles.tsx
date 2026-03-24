@@ -71,9 +71,6 @@ export function DomainRoles() {
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white">
                         Core Expertise
                     </h2>
-                    <p className="text-zinc-400 text-sm md:text-base max-w-xl">
-                        Hardware-to-Cloud engineering spanning low-level silicon logic to highly scalable web architectures.
-                    </p>
                 </div>
 
                 {/* 3x2 Grid */}

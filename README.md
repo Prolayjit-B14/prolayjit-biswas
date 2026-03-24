@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prolayjit Biswas | Full-Stack Hardware Engineer
+> **Synthesizing High-Performance Silicon Logic & Cloud-Connected IoT Architectures**
 
-## Getting Started
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/prolayjit-biswas)
+[![Portfolio](https://img.shields.io/badge/Live-Portfolio-00ff9f?style=for-the-badge)](https://prolayjit.dev)
+[![SIH Finalist](https://img.shields.io/badge/Achievement-SIH_Finalist-rose?style=for-the-badge)](/achievements)
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠 Engineering Stack
+
+### 🟦 Hardware & VLSI
+*   **Design Tools:** KiCAD, Altium Designer, Autodesk Eagle
+*   **Hardware:** ESP32, STM32, Arduino, FPGA (Basys 3)
+*   **Logic:** Verilog RTL, SystemVerilog, RTL Synthesis
+*   **Prototyping:** 4-Layer PCB Design, SMD Soldering, CAD (Fusion 360)
+
+### 🟩 Software & Cloud
+*   **Frontend:** Next.js 14 (App Router), Tailwind CSS, Framer Motion
+*   **Backend:** Node.js, Express, Firebase Functions
+*   **Protocols:** MQTT, HTTP/REST, WebSocket, LoRaWAN
+*   **DevOps:** GitHub Actions (CI/CD), Vercel, Docker
+
+---
+
+## 🚀 Key Project Domains
+
+### [Hardware Lab](/hardware-lab)
+Deep dives into custom PCB design and VLSI prototyping. Features the 32-bit FPGA ALU and high-density ESP32-S3 development boards.
+
+### [IoT Ecosystems](/architecture)
+End-to-end telemetry systems. From sensor nodes to real-time cloud dashboards with integrated security layers.
+
+### [Research & R&D](/research)
+Academic-style abstracts on Edge AI optimization and silicon logic efficiency.
+
+---
+
+## 🏗 Repository Structure
+
+```tree
+.
+├── src/
+│   ├── app/            # Next.js 14 App Router (Routing & Pages)
+│   ├── components/     # High-fidelity UI & Layout components
+│   ├── data/           # Unified Project & Professional data
+│   ├── lib/            # Utilities (GitHub API, Blog parsing, hooks)
+│   └── styles/         # Global design tokens and CSS modules
+├── public/             # Static assets (3D models, Schematics, Resumes)
+├── .agents/workflows   # AI-Assisted engineering workflows
+└── README.md           # This document
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚡ Technical Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone & Install:**
+   ```bash
+   git clone https://github.com/Prolayjit-B14/prolayjit-biswas.git
+   npm install
+   ```
 
-## Learn More
+2. **Environment Configuration:**
+   Create a `.env.local` with:
+   * `GITHUB_TOKEN` (Meta-data fetching)
+   * `RESEND_API_KEY` (Contact infrastructure)
 
-To learn more about Next.js, take a look at the following resources:
+3. **Development:**
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🏆 Achievements & Validation
+*   **Smart India Hackathon Finalist:** Recognized for innovative IoT solutions at a national level.
+*   **MAKATHON Winner:** Rapid prototyping and hardware-software integration champion.
+*   **6+ Scalable Projects:** From silicon logic to industrial IoT telemetry.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contact & Collaboration
+*   **Email:** [prolayjitbiswas2004@gmail.com](mailto:prolayjitbiswas2004@gmail.com)
+*   **Twitter/X:** [@pro_lay04](https://x.com/pro_lay04)
+*   **Location:** West Bengal, India
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*"Engineering is not just about building things; it's about solving the right problems with the most efficient architecture."*

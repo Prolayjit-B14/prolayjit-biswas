@@ -70,11 +70,8 @@ export function Contact() {
                             <Send className="h-3 w-3" /> Get In Touch
                         </div>
                         <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-3 text-glow">
-                            Let&apos;s Build Together
+                            Contact
                         </h2>
-                        <p className="text-sm text-muted-foreground mb-8 leading-relaxed max-w-sm">
-                            Open to opportunities in VLSI, Embedded Systems, IoT, and Fullstack engineering.
-                        </p>
 
                         <div className="space-y-5">
                             {CONTACTS.map(({ icon: Icon, label, value, href }) => (

@@ -10,7 +10,7 @@ export interface Project {
     impact?: string;
     features: string[];
     technologies: string[];
-    category: "Software" | "Hardware" | "IoT" | "AI" | "VLSI";
+    category: "Software" | "Hardware" | "IoT" | "AI" | "VLSI" | "Embedded" | "PCB" | "CAD";
     date: string;
     role?: string;
     githubUrl?: string;
@@ -79,7 +79,7 @@ export const projects: Project[] = [
         slug: "she-shield",
         title: "She Shield",
         tagline: "Women's Safety Wearable",
-        category: "Hardware",
+        category: "Embedded",
         date: "2024-03",
         role: "PCB Designer & Embedded Developer",
         description: "A compact wearable safety device designed to provide emergency protection and location tracking.",
@@ -295,7 +295,7 @@ export const projects: Project[] = [
         slug: "custom-esp32-dev-board",
         title: "Custom ESP32-S3 Dev Board",
         tagline: "High-density 4-layer PCB Design",
-        category: "Hardware",
+        category: "PCB",
         date: "2024-06",
         description: "A comprehensive custom development board built around the ESP32-S3 featuring built-in LiPo charging, USB-C PD, and exposed GPIOs.",
         problem: "Off-the-shelf ESP32 dev boards lack native battery charging and standard industrial connectors for rapid prototyping.",

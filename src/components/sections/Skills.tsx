@@ -38,11 +38,8 @@ export function Skills() {
             <Container>
                 <div className="flex flex-col items-center text-center mb-10">
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white">
-                        Skills & Technologies
+                        Technical Skills
                     </h2>
-                    <p className="text-zinc-400 text-sm md:text-base max-w-xl">
-                        A rigorous stack of modern languages and legacy engineering tools.
-                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

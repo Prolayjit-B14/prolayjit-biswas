@@ -87,11 +87,8 @@ export function Timeline() {
                 {/* Header */}
                 <div className="flex flex-col mb-10 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white">
-                        Background
+                        Experience
                     </h2>
-                    <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto">
-                        Academic foundations and practical engineering experience.
-                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">

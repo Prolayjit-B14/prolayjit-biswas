@@ -9,14 +9,20 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const LINKS = {
     explore: [
+        { href: "/",           label: "Home" },
         { href: "/projects",   label: "Projects" },
-        { href: "/hackathons", label: "Hackathons" },
         { href: "/hardware",   label: "Hardware Lab" },
-        { href: "/gallery",    label: "Gallery" },
-        { href: "/education",  label: "Education" },
-        { href: "/dashboard",  label: "Dashboard" },
         { href: "/blog",       label: "Blog" },
-        { href: "/terminal",   label: "Terminal" },
+    ],
+    deepDives: [
+        { href: "/architecture",  label: "Architecture" },
+        { href: "/workflow",      label: "Workflow" },
+        { href: "/case-studies",  label: "Case Studies" },
+        { href: "/research",      label: "Research" },
+        { href: "/lab-notes",     label: "Lab Notes" },
+        { href: "/tech-map",      label: "Tech Map" },
+        { href: "/open-source",   label: "Open Source" },
+        { href: "/achievements",  label: "Achievements" },
     ],
     connect: [
         { href: "https://github.com/Prolayjit-B14",               label: "GitHub" },
@@ -93,6 +99,24 @@ export function Footer() {
                                         className="text-sm text-[#94a3b8] hover:text-[#f1f5f9] transition-colors flex items-center gap-1.5 group"
                                     >
                                         <span className="h-px w-3 bg-primary/40 group-hover:w-5 group-hover:bg-primary transition-all duration-300 rounded-full flex-shrink-0" />
+                                        {label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Deep Dives */}
+                    <div>
+                        <p className="text-[11px] font-black uppercase tracking-[0.18em] text-emerald-400 mb-5">Technical Deep Dives</p>
+                        <ul className="grid grid-cols-1 gap-y-3">
+                            {LINKS.deepDives.map(({ href, label }) => (
+                                <li key={href}>
+                                    <Link
+                                        href={href}
+                                        className="text-xs text-[#94a3b8] hover:text-emerald-400 transition-colors flex items-center gap-1.5 group"
+                                    >
+                                        <span className="h-px w-2 bg-emerald-500/30 group-hover:w-4 group-hover:bg-emerald-400 transition-all duration-300 rounded-full flex-shrink-0" />
                                         {label}
                                     </Link>
                                 </li>
