@@ -5,9 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/components/layout/ThemeProvider";
 import {
     LayoutDashboard, FileText, Cpu, Blocks, Menu, X, Send,
-    Terminal as TerminalIcon, Trophy, GraduationCap, Image as ImageIcon, type LucideIcon,
+    Terminal as TerminalIcon, Trophy, GraduationCap, Image as ImageIcon,
+    Sun, Moon, type LucideIcon,
 } from "lucide-react";
 
 interface NavItem {
@@ -17,20 +19,21 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-    { href: "/projects", label: "Projects", icon: Blocks },
-    { href: "/hardware", label: "Lab", icon: Cpu },
-    { href: "/hackathons", label: "Hackathons", icon: Trophy },
-    { href: "/gallery", label: "Gallery", icon: ImageIcon },
-    { href: "/education", label: "Education", icon: GraduationCap },
-    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { href: "/terminal", label: "Terminal", icon: TerminalIcon },
-    { href: "/blog", label: "Blog", icon: FileText },
+    { href: "/projects",   label: "Projects",   icon: Blocks },
+    { href: "/hardware",   label: "Lab",         icon: Cpu },
+    { href: "/hackathons", label: "Hackathons",  icon: Trophy },
+    { href: "/gallery",    label: "Gallery",     icon: ImageIcon },
+    { href: "/education",  label: "Education",   icon: GraduationCap },
+    { href: "/dashboard",  label: "Dashboard",   icon: LayoutDashboard },
+    { href: "/terminal",   label: "Terminal",    icon: TerminalIcon },
+    { href: "/blog",       label: "Blog",        icon: FileText },
 ];
 
 export function Navbar() {
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
@@ -43,7 +46,14 @@ export function Navbar() {
 
     return (
         <>
-            <nav className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled ? "border-b border-white/8 bg-[#030712]/90 backdrop-blur-2xl shadow-[0_1px_30px_rgba(0,0,0,0.5)]" : "border-b border-white/5 bg-[#030712]/80 backdrop-blur-2xl"}`}>
+            <nav
+                aria-label="Main navigation"
+                className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+                    scrolled
+                        ? "border-b border-white/10 bg-[#030712]/92 backdrop-blur-2xl shadow-[0_1px_30px_rgba(0,0,0,0.5)]"
+                        : "border-b border-white/5 bg-[#030712]/80 backdrop-blur-2xl"
+                }`}
+            >
                 <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
                     {/* Logo */}
@@ -60,6 +70,7 @@ export function Navbar() {
                             <Link
                                 key={href}
                                 href={href}
+                                aria-current={isActive(href) ? "page" : undefined}
                                 className={cn(
                                     "relative flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200",
                                     isActive(href)
@@ -82,6 +93,18 @@ export function Navbar() {
 
                     {/* Right actions */}
                     <div className="flex items-center gap-2">
+                        {/* Theme toggle */}
+                        <button
+                            onClick={toggleTheme}
+                            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                            className="hidden md:flex items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/5 text-[#94a3b8] hover:text-primary hover:border-primary/30 transition-all"
+                        >
+                            {theme === "dark"
+                                ? <Sun className="h-4 w-4" />
+                                : <Moon className="h-4 w-4" />
+                            }
+                        </button>
+
                         {/* Hire Me */}
                         <a
                             href="mailto:prolayjitbiswas14112004@gmail.com"
@@ -94,8 +117,10 @@ export function Navbar() {
                         {/* Hamburger — mobile only */}
                         <button
                             onClick={() => setOpen((p) => !p)}
+                            aria-label="Toggle navigation menu"
+                            aria-expanded={open}
+                            aria-controls="mobile-nav"
                             className="flex md:hidden items-center justify-center h-9 w-9 rounded-lg border border-white/10 bg-white/5 text-[#94a3b8] hover:text-[#f1f5f9] transition-colors"
-                            aria-label="Toggle menu"
                         >
                             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
                         </button>
@@ -107,6 +132,7 @@ export function Navbar() {
             <AnimatePresence>
                 {open && (
                     <motion.div
+                        id="mobile-nav"
                         key="mobile-menu"
                         initial={{ opacity: 0, y: -8 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -120,6 +146,7 @@ export function Navbar() {
                                     key={href}
                                     href={href}
                                     onClick={() => setOpen(false)}
+                                    aria-current={isActive(href) ? "page" : undefined}
                                     className={cn(
                                         "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-colors",
                                         isActive(href)
@@ -131,6 +158,16 @@ export function Navbar() {
                                     {label}
                                 </Link>
                             ))}
+
+                            {/* Theme toggle mobile */}
+                            <button
+                                onClick={() => { toggleTheme(); setOpen(false); }}
+                                className="w-full flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[#94a3b8] hover:text-[#f1f5f9] hover:bg-white/5 transition-colors"
+                            >
+                                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                                {theme === "dark" ? "Light Mode" : "Dark Mode"}
+                            </button>
+
                             <a
                                 href="mailto:prolayjitbiswas14112004@gmail.com"
                                 onClick={() => setOpen(false)}

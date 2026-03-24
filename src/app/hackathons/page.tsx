@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
@@ -35,8 +36,8 @@ export default function HackathonsPage() {
                                 <div className="lg:w-2/5 relative h-56 lg:h-auto min-h-[280px] bg-[#0a0f1c] overflow-hidden flex-shrink-0">
                                     {h.imageUrl ? (
                                         <>
-                                            <img src={h.imageUrl} alt={h.name}
-                                                className="absolute inset-0 w-full h-full object-cover opacity-55 group-hover:scale-105 transition-transform duration-700" />
+                                            <Image src={h.imageUrl} alt={h.name} fill
+                                                className="object-cover opacity-55 group-hover:scale-105 transition-transform duration-700" />
                                             <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#030712] via-[#030712]/50 to-transparent" />
                                         </>
                                     ) : (

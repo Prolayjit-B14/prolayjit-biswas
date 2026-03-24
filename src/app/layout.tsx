@@ -11,6 +11,7 @@ import { SmoothScroller } from "@/components/layout/SmoothScroller";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://prolayjit-biswas.vercel.app"),
   title: "Prolayjit Biswas | Electronics Engineer & Hardware Developer",
   description: "From Hello World to Hardware — Building Smart Systems with Code and Circuits.",
   keywords: ["Electronics Engineer", "IoT", "ESP32", "PCB Design", "Embedded Systems", "Hardware Developer", "VLSI", "KiCAD", "3D Printing", "Raspberry Pi"],
@@ -21,12 +22,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://prolayjit-biswas.vercel.app",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Prolayjit Biswas Portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Prolayjit Biswas | Electronics Engineer",
     description: "From Hello World to Hardware — Building Smart Systems with Code and Circuits.",
     creator: "@pro_lay04",
+    images: ["/og.png"],
   },
 };
 
@@ -42,11 +45,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body className={`${inter.className} min-h-screen bg-[#030712] text-[#f1f5f9] antialiased overflow-x-hidden`}>
+        {/* Skip navigation — visible on keyboard Tab, hidden otherwise */}
+        <a href="#main" className="skip-nav">
+          Skip to main content
+        </a>
         <ThemeProvider>
           <SmoothScroller />
           <CustomCursor />
           <Navbar />
-          <main className="flex min-h-screen flex-col pt-16">
+          <main id="main" className="flex min-h-screen flex-col pt-16">
             {children}
           </main>
           <Chatbot />

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Code, Cpu, ExternalLink, Calendar, Github } from "lucide-react";
 import type { Project } from "@/data/projects";
@@ -18,10 +19,11 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             {/* Image Banner */}
             {project.imageUrl && (
                 <div className="relative w-full h-48 overflow-hidden bg-[#0a0f1c]">
-                    <img
+                    <Image
                         src={project.imageUrl}
                         alt={project.title}
-                        className="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"
+                        fill
+                        className="object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent pointer-events-none" />
 

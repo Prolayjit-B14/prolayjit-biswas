@@ -130,10 +130,16 @@ function MarqueeRow({ items, reverse = false }: { items: {name:string;icon:strin
                 {doubled.map((chip, i) => (
                     <div
                         key={`${chip.name}-${i}`}
-                        className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border whitespace-nowrap select-none font-medium text-sm transition-all duration-200 ${chip.color}`}
+                        className={`group relative inline-flex items-center gap-2 px-4 py-2 rounded-full border whitespace-nowrap select-none font-medium text-sm transition-all duration-200 ${chip.color}`}
                     >
                         {getIcon(chip.icon)}
                         <span>{chip.name}</span>
+                        
+                        {/* Tooltip */}
+                        <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-[#020810] border border-white/10 text-white text-[10px] font-bold tracking-widest uppercase rounded flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-200 pointer-events-none drop-shadow-2xl z-50">
+                            Proficient
+                            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#020810] border-r border-b border-white/10 transform rotate-45" />
+                        </div>
                     </div>
                 ))}
             </motion.div>

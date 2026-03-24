@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { Maximize, Filter, Search, Layers } from "lucide-react";
 
 const LAB_ITEMS = [
@@ -128,10 +129,11 @@ export function HardwareGallery() {
                                 className="relative h-72 rounded-2xl border border-white/10 overflow-hidden group bg-[#0a0f1c] cursor-zoom-in"
                             >
                                 {/* Image Background */}
-                                <img
+                                <Image
                                     src={item.image}
                                     alt={item.title}
-                                    className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700"
+                                    fill
+                                    className="object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-700"
                                 />
 
                                 {/* Overlay icon */}

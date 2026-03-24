@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { Heart, MessageCircle, Repeat2, ExternalLink, BookOpen } from "lucide-react";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import type { BlogPost } from "@/lib/blog";
 
 // Hardcoded realistic posts — LinkedIn/X don't have open public post APIs
 const LINKEDIN_POSTS = [
@@ -152,7 +153,7 @@ function XCard({ post, i }: { post: typeof X_POSTS[0]; i: number }) {
     );
 }
 
-export function SocialWall({ posts }: { posts: any[] }) {
+export function SocialWall({ posts }: { posts: BlogPost[] }) {
     const hasBlogs = posts && posts.length > 0;
 
     return (
@@ -168,10 +169,10 @@ export function SocialWall({ posts }: { posts: any[] }) {
                 >
                     <div>
                         <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-2 text-glow">
-                            Community & Updates
+                            Community & Articles
                         </h2>
                         <p className="text-[#94a3b8] text-sm max-w-lg">
-                            Live updates, articles, and engineering moments from across my social feeds.
+                            Engineering posts, articles, and project updates shared across my social platforms.
                         </p>
                     </div>
                     <div className="flex flex-wrap items-center gap-3">

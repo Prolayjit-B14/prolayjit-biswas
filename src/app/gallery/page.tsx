@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
@@ -73,10 +74,11 @@ export default function GalleryPage() {
                                 whileHover={{ y: -6 }}
                                 className="group relative rounded-2xl overflow-hidden border border-white/8 aspect-[4/3] cursor-pointer"
                             >
-                                <img
+                                <Image
                                     src={item.imageUrl!}
                                     alt={item.title}
-                                    className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-50 group-hover:scale-105 transition-all duration-500"
+                                    fill
+                                    className="object-cover opacity-75 group-hover:opacity-50 group-hover:scale-105 transition-all duration-500"
                                 />
                                 {/* Always-visible category chip */}
                                 <div className="absolute top-3 left-3">

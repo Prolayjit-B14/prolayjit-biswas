@@ -1,25 +1,30 @@
-export interface GitHubUser {
-    login: string;
-    avatar_url: string;
-    name: string;
-    bio: string;
-    public_repos: number;
-    followers: number;
-    following: number;
-    public_gists: number;
-    html_url: string;
-}
+import { z } from "zod";
 
-export interface GitHubRepo {
-    id: number;
-    name: string;
-    description: string | null;
-    html_url: string;
-    stargazers_count: number;
-    forks_count: number;
-    language: string | null;
-    topics: string[];
-}
+const GitHubUserSchema = z.object({
+    login: z.string(),
+    avatar_url: z.string(),
+    name: z.string().nullable().optional(),
+    bio: z.string().nullable().optional(),
+    public_repos: z.number(),
+    followers: z.number(),
+    following: z.number(),
+    public_gists: z.number(),
+    html_url: z.string(),
+}).passthrough();
+
+const GitHubRepoSchema = z.object({
+    id: z.number(),
+    name: z.string(),
+    description: z.string().nullable().optional(),
+    html_url: z.string(),
+    stargazers_count: z.number(),
+    forks_count: z.number(),
+    language: z.string().nullable().optional(),
+    topics: z.array(z.string()).optional().default([]),
+}).passthrough();
+
+export type GitHubUser = z.infer<typeof GitHubUserSchema>;
+export type GitHubRepo = z.infer<typeof GitHubRepoSchema>;
 
 export interface GitHubData {
     user: GitHubUser | null;
@@ -48,7 +53,10 @@ export async function getGithubData(username: string): Promise<GitHubData> {
             throw new Error(`GitHub API error: user=${userRes.status} repos=${reposRes.status}`);
         }
 
-        const [user, repos] = await Promise.all([userRes.json(), reposRes.json()]) as [GitHubUser, GitHubRepo[]];
+        const [userData, reposData] = await Promise.all([userRes.json(), reposRes.json()]);
+
+        const user = GitHubUserSchema.parse(userData);
+        const repos = z.array(GitHubRepoSchema).parse(reposData);
 
         return { user, repos };
     } catch (error) {

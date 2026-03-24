@@ -1,32 +1,62 @@
 import { Hero } from "@/components/sections/Hero";
-import { Timeline } from "@/components/sections/Timeline";
 import { DomainRoles } from "@/components/sections/DomainRoles";
 import { Skills } from "@/components/sections/Skills";
+import { Timeline } from "@/components/sections/Timeline";
 import { SocialWall } from "@/components/sections/SocialWall";
 import { Contact } from "@/components/sections/Contact";
 import { Container } from "@/components/layout/Container";
-import { Trophy, ArrowRight } from "lucide-react";
+import { Trophy, ArrowRight, Layers, GitBranch, Award } from "lucide-react";
 import Link from "next/link";
 import { getGithubData } from "@/lib/github";
 import { getBlogPosts } from "@/lib/blog";
 import { RepoCards } from "@/components/dashboard/RepoCards";
 
 export default async function Home() {
-  const { repos } = await getGithubData("Prolayjit-B14");
+  const { user, repos } = await getGithubData("Prolayjit-B14");
   const topRepos = repos.slice(0, 3);
 
   const allPosts = await getBlogPosts();
   const topPosts = allPosts.slice(0, 3);
 
+  const totalStars = repos.reduce((acc, repo) => acc + repo.stargazers_count, 0);
+  const totalRepos = user?.public_repos || repos.length;
+
   return (
     <>
-      <Hero />
-      <Timeline />
+      {/* 1. Who are you? */}
+      <Hero stats={{ stars: totalStars, repos: totalRepos }} />
+
+      {/* Stats strip — quick credibility signal */}
+      <div className="relative border-y border-white/5 bg-[#050d1a] overflow-hidden">
+        <Container>
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5">
+            {[
+              { icon: Layers,    value: "6+",         label: "Projects Shipped" },
+              { icon: Award,     value: "2",           label: "Hackathon Wins" },
+              { icon: GitBranch, value: "3",           label: "Engineering Domains" },
+              { icon: Trophy,    value: "National",    label: "SIH 2024 Level" },
+            ].map(({ icon: Icon, value, label }) => (
+              <div key={label} className="flex flex-col items-center justify-center py-6 px-4 gap-1 text-center">
+                <Icon className="h-4 w-4 text-primary mb-1 opacity-70" />
+                <span className="text-2xl md:text-3xl font-black text-glow">{value}</span>
+                <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">{label}</span>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </div>
+
+      {/* 2. What do you do? */}
       <DomainRoles />
+
+      {/* 3. What tools do you use? */}
       <Skills />
 
-      {/* Featured Projects/Hackathons Section */}
-      <section className="relative py-16 bg-background">
+      {/* 4. How did you get here? */}
+      <Timeline />
+
+      {/* 5. What have you built? */}
+      <section className="relative py-16 bg-background border-t border-white/5">
         <Container>
           <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
             <div>
@@ -51,7 +81,10 @@ export default async function Home() {
         </Container>
       </section>
 
+      {/* 6. Community & social proof */}
       <SocialWall posts={topPosts} />
+
+      {/* 7. Connect — final CTA */}
       <Contact />
     </>
   );

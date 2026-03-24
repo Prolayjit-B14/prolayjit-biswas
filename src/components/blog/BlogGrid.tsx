@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Filter, ArrowRight, Clock } from "lucide-react";
+import Image from "next/image";
 import type { BlogPost } from "@/lib/blog";
 
 export function BlogGrid({ posts }: { posts: BlogPost[] }) {
@@ -95,10 +96,11 @@ export function BlogGrid({ posts }: { posts: BlogPost[] }) {
                                 {/* Cover Image - Optional, not all blogs have it */}
                                 {post.coverImage && (
                                     <div className="relative w-full h-40 overflow-hidden bg-[#0a0f1c]">
-                                        <img
+                                        <Image
                                             src={post.coverImage}
                                             alt={post.title}
-                                            className="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"
+                                            fill
+                                            className="object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-700"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent pointer-events-none" />
                                     </div>
