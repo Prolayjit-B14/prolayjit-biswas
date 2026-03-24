@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -9,6 +8,7 @@ import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { SmoothScroller } from "@/components/layout/SmoothScroller";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://prolayjit-biswas.vercel.app"),
@@ -44,7 +44,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           }}
         />
       </head>
-      <body className={`${inter.className} min-h-screen bg-[#030712] text-[#f1f5f9] antialiased overflow-x-hidden`}>
+      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen bg-[#030712] text-[#f1f5f9] antialiased overflow-x-hidden`}>
         {/* Skip navigation — visible on keyboard Tab, hidden otherwise */}
         <a href="#main" className="skip-nav">
           Skip to main content

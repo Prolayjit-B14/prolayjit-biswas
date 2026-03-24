@@ -14,10 +14,10 @@ import {
 } from "lucide-react";
 
 const ECOSYSTEM_ITEMS = [
-    { href: "/hardware-lab", label: "Hardware Lab", icon: FlaskConical, color: "text-[#ff0055]" },
-    { href: "/research",     label: "Research",     icon: Microscope,   color: "text-[#00f2ff]" },
-    { href: "/workflow",     label: "Workflow",     icon: GitBranch,    color: "text-[#00f2ff]" },
-    { href: "/achievements", label: "Achievements", icon: Award,        color: "text-[#00f2ff]" },
+    { href: "/hardware-lab", label: "Silicon Foundry", icon: FlaskConical, color: "text-[#ff0055]" },
+    { href: "/research",     label: "Technical Papers", icon: Microscope,   color: "text-[#00f2ff]" },
+    { href: "/workflow",     label: "Design Protocols", icon: GitBranch,    color: "text-[#00f2ff]" },
+    { href: "/achievements", label: "Engineering Honors", icon: Award,        color: "text-[#00f2ff]" },
 ];
 
 export function Navbar() {
@@ -145,7 +145,7 @@ export function Navbar() {
                                 className="hidden sm:flex items-center gap-2 rounded-xl bg-white text-black px-6 py-2.5 text-[10px] font-black transition-all hover:bg-[#00f2ff] hover:text-white uppercase tracking-widest shadow-2xl"
                             >
                                 <Send className="h-3.5 w-3.5" />
-                                Hire Me
+                                Get In Touch
                             </a>
 
                             <button
@@ -227,7 +227,7 @@ export function Navbar() {
                                     className="flex items-center justify-center gap-3 rounded-2xl px-4 py-5 text-xs font-black uppercase tracking-[0.2em] text-[#020617] bg-white shadow-xl"
                                 >
                                     <Send className="h-4 w-4" />
-                                    Hire Me
+                                    Get In Touch
                                 </a>
                             </div>
                         </div>

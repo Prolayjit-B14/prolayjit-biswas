@@ -4,43 +4,44 @@
    DESIGN TOKENS — industry-grade token system
    ───────────────────────────────────────────────────────── */
 @theme {
-  /* Colours — Vibrant Engineering Palette */
+  /* Colours — Vibrant Engineering Palette [EMERALD, CYAN, ROSE] */
   --color-background:           #020617;
   --color-foreground:           #f8fafc;
   
-  /* Primary accents */
+  /* Primary accents — Neon Spectrum */
   --color-primary:              #00ff9f; /* Electric Emerald */
   --color-primary-foreground:   #020617;
   
-  --color-secondary:            #3b82f6; /* Cyber Blue */
-  --color-secondary-foreground: #f8fafc;
+  --color-cyan:                 #00f2ff; /* Cyber Cyan */
+  --color-rose:                 #ff0055; /* Neon Rose */
+  
+  --color-secondary:            #00f2ff; 
+  --color-secondary-foreground: #020617;
   
   /* Multi-accent spectrum */
-  --color-accent-blue:          #60a5fa;
-  --color-accent-emerald:       #34d399;
-  --color-accent-amber:         #fbbf24;
-  --color-accent-rose:          #fb7185;
+  --color-accent-blue:          #00f2ff;
+  --color-accent-emerald:       #00ff9f;
+  --color-accent-rose:          #ff0055;
   --color-accent-purple:        #a78bfa;
 
   --color-muted:                #1e293b;
-  --color-muted-foreground:     #94a3b8;
+  --color-muted-foreground:     #64748b;
   --color-border:               #1e293b;
   --color-card:                 #0b1220;
 
-  /* Typography scale */
-  --font-display: clamp(3rem, 7vw, 6rem);
-  --font-heading: clamp(1.75rem, 4vw, 3.5rem);
+  /* Typography scale — Industry Matrix */
+  --font-sans:     var(--font-inter), ui-sans-serif, system-ui;
+  --font-display:  var(--font-outfit), ui-sans-serif, system-ui;
+  --font-heading:  var(--font-outfit), ui-sans-serif, system-ui;
 
-  /* Easing curves for premium feel */
+  /* Easing curves */
   --ease-spring:  cubic-bezier(0.22, 1, 0.36, 1);
   --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Expanded Glow variants */
-  --glow-emerald: 0 0 20px rgba(16, 185, 129, 0.4);
-  --glow-blue:    0 0 20px rgba(59, 130, 246, 0.4);
-  --glow-amber:   0 0 20px rgba(245, 158, 11, 0.4);
-  --glow-rose:    0 0 20px rgba(244, 63, 94, 0.4);
+  --glow-emerald: 0 0 25px rgba(0, 255, 159, 0.5);
+  --glow-cyan:    0 0 25px rgba(0, 242, 255, 0.5);
+  --glow-rose:    0 0 25px rgba(255, 0, 85, 0.5);
 }
 
 /* ── Light mode overrides ──────────────────────────────────
@@ -223,6 +224,15 @@ body {
 }
 .animate-timeline-pulse {
   animation: timeline-pulse 2s ease-in-out infinite;
+}
+
+/* Scanning line effect */
+@keyframes scan {
+  from { top: -10%; }
+  to   { top: 110%; }
+}
+.animate-scan {
+  animation: scan 3s linear infinite;
 }
 
 /* ── Reduced motion — respects user OS setting ──────────── */
