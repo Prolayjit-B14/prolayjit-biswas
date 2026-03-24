@@ -155,7 +155,7 @@ export function CommunitySection({ repos, posts }: { repos: any[]; posts: BlogPo
                                 </p>
                                 <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-6">
                                     <span className="text-[10px] font-black uppercase tracking-widest text-emerald-400 bg-emerald-500/5 px-3 py-1 rounded-lg">Read more →</span>
-                                    <span className="text-[9px] font-black text-zinc-700 uppercase tracking-widest tracking-widest">{ (post as any).pubDate || "2025" }</span>
+                                    <span className="text-[9px] font-black text-zinc-700 uppercase tracking-widest">{(post as any).pubDate || "2025"}</span>
                                 </div>
                             </motion.a>
                         ))}
