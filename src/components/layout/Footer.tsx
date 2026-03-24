@@ -173,6 +173,7 @@ export function Footer() {
                         <div className="h-6 px-2.5 rounded border border-white/10 bg-white/5 flex items-center text-[10px] text-white/80 font-semibold gap-1.5"><Cpu className="w-3 h-3"/> Next.js</div>
                         <div className="h-6 px-2.5 rounded border border-white/10 bg-white/5 flex items-center text-[10px] text-white/80 font-semibold gap-1.5"><span className="text-blue-400 font-black">f</span> Motion</div>
                         <div className="h-6 px-2.5 rounded border border-white/10 bg-white/5 flex items-center text-[10px] text-white/80 font-semibold gap-1.5">▲ Vercel</div>
+                        <div className="h-6 px-2.5 rounded border border-emerald-500/30 bg-emerald-500/10 flex items-center text-[10px] text-emerald-400 font-bold gap-1.5">⚡ Lighthouse 99+</div>
                     </div>
 
                     <div className="flex items-center gap-6">

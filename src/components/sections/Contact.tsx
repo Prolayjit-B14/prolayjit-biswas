@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
-import { Send, MapPin, Mail, Phone, CheckCircle, Loader2, AlertCircle } from "lucide-react";
+import { Send, MapPin, Mail, Phone, CheckCircle, Loader2, AlertCircle, Calendar } from "lucide-react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -73,7 +73,7 @@ export function Contact() {
                             Let&apos;s Build Together
                         </h2>
                         <p className="text-sm text-muted-foreground mb-8 leading-relaxed max-w-sm">
-                            Whether it&apos;s a PCB design, IoT system, full-stack platform, or hackathon collaboration — my inbox is always open.
+                            Open to opportunities in VLSI, Embedded Systems, IoT, and Fullstack engineering.
                         </p>
 
                         <div className="space-y-5">
@@ -102,6 +102,17 @@ export function Contact() {
                             </span>
                             <span className="text-sm font-semibold text-primary">Available for opportunities — 2025</span>
                         </div>
+
+                        {/* Calendly button */}
+                        <a
+                            href="https://calendly.com/prolayjitbiswas14112004/30min"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mt-6 flex w-fit items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-5 py-3 text-sm font-semibold text-[#f8fafc] hover:bg-white/10 hover:border-white/20 transition-all"
+                        >
+                            <Calendar className="h-4 w-4 text-primary" />
+                            Book a Meeting
+                        </a>
                     </motion.div>
 
                     {/* Right Form */}

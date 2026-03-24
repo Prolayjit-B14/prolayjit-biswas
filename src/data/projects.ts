@@ -3,9 +3,14 @@ export interface Project {
     title: string;
     tagline: string;
     description: string;
+    problem?: string;
+    solution?: string;
+    architecture?: string;
+    outcome?: string;
+    impact?: string;
     features: string[];
     technologies: string[];
-    category: "Software" | "Hardware" | "IoT" | "AI";
+    category: "Software" | "Hardware" | "IoT" | "AI" | "VLSI";
     date: string;
     role?: string;
     githubUrl?: string;
@@ -22,6 +27,10 @@ export const projects: Project[] = [
         date: "2024-08",
         role: "Frontend Developer & UI/UX Designer",
         description: "An AI-powered platform for analyzing and generating Indian classical music using raga theory and machine learning.",
+        problem: "Classical music theory relies on complex microtones (shrutis) lacking modern digital analysis tools.",
+        solution: "Engineered an AI platform utilizing Web Audio API to analyze frequencies natively.",
+        architecture: "Web Audio API -> Next.js Backend -> Gemini LLM -> Real-time Visualization",
+        outcome: "Empowers vocalists with exact shruti visualization in real-time.",
         features: [
             "Real-time audio synthesis",
             "Interactive raga visualization",
@@ -40,6 +49,10 @@ export const projects: Project[] = [
         date: "2024-03",
         role: "PCB Designer & Embedded Developer",
         description: "A compact wearable safety device designed to provide emergency protection and location tracking.",
+        problem: "Existing safety devices are bulky and require continuous manual interaction during emergencies.",
+        solution: "Designed a compact wearable PCB integrating BLE, GPS, and a defensive shock module.",
+        architecture: "Custom PCB -> ESP32 Edge -> BLE -> MIT App Dashboard -> Live Location",
+        outcome: "Single-touch SOS alerts and continuous live-location tracking deployed successfully.",
         features: [
             "BLE smartphone connectivity",
             "GPS location sharing",
@@ -57,6 +70,9 @@ export const projects: Project[] = [
         category: "IoT",
         date: "2023-11",
         description: "Real-time IoT tracking system using ESP32 and cloud integration for precise location monitoring.",
+        problem: "Commercial GPS trackers enforce expensive monthly subscriptions and lock data into proprietary, closed ecosystems.",
+        solution: "Built an open-source hardware tracker utilizing ESP32, TinyGPS++, and cloud webhooks for independent encrypted data logging.",
+        impact: "Achieved sub-5 meter accuracy with 48+ hours of offline location buffering.",
         features: [
             "GPS location tracking",
             "HTML email alerts with map links",
@@ -123,12 +139,75 @@ export const projects: Project[] = [
         category: "IoT",
         date: "2023-07",
         description: "IoT-based system for monitoring agricultural environments using sensors and automating water pumps based on soil moisture levels.",
+        problem: "Farmers lack real-time soil condition monitoring, leading to water wastage.",
+        solution: "Built ESP32 sensor node with MQTT cloud dashboard.",
+        architecture: "Soil Sensors -> ESP32 -> MQTT Broker -> Node.js API -> Next.js Dashboard",
+        outcome: "Real-time soil moisture insights scaling up to 40% water reduction.",
         features: [
             "Environmental monitoring",
             "Sensor-based automation",
             "Real-time alerts"
         ],
-        technologies: ["ESP32", "IoT Sensors", "Cloud Dashboard"],
+        technologies: ["ESP32", "MQTT", "Node.js", "Next.js"],
+        githubUrl: "https://github.com/Prolayjit-B14",
+    },
+    {
+        slug: "fpga-32bit-alu",
+        title: "32-Bit FPGA ALU",
+        tagline: "High-speed Arithmetic Logic Unit",
+        category: "VLSI",
+        date: "2024-11",
+        description: "A custom 32-bit Arithmetic Logic Unit engineered in Verilog, optimized for high-speed clock cycles on FPGA.",
+        problem: "General purpose processors create performance bottlenecks for specific embedded mathematical operations.",
+        solution: "Programmed a hardware-level 32-bit ALU utilizing behavioral Verilog and simulated strictly on testbenches.",
+        architecture: "Verilog RTL -> Gate Level Netlist -> Xilinx Vivado -> FPGA Bitstream",
+        outcome: "High performance parallel logic execution validated via exhaustive RTL simulation.",
+        features: [
+            "32-bit arithmetic processing",
+            "Fast carry lookahead adder",
+            "Gate-level optimizations",
+            "Xilinx simulation"
+        ],
+        technologies: ["Verilog", "FPGA", "Vivado", "Digital Logic", "RTL"],
+        githubUrl: "https://github.com/Prolayjit-B14",
+    },
+    {
+        slug: "lora-mesh-network",
+        title: "LoRa Mesh Sensor Network",
+        tagline: "Long-range off-grid telemetry",
+        category: "IoT",
+        date: "2024-10",
+        description: "A low-power, long-range mesh network utilizing LoRa modules for environmental data acquisition in remote areas without cellular coverage.",
+        problem: "Remote ecological monitoring sensors lack connectivity infrastructure and drain battery rapidly on cellular networks.",
+        solution: "Engineered a decentralized LoRa mesh topology nodes communicating with a central edge gateway.",
+        architecture: "Sensor Nodes -> LoRa SX1278 -> Central Gateway -> AWS IoT Core",
+        outcome: "Achieved 5km+ reliable telemetry transmission with 6-month battery life per edge node.",
+        features: [
+            "Decentralized mesh routing",
+            "Low-power sleep cycles",
+            "AWS IoT Core integration"
+        ],
+        technologies: ["LoRa SX1278", "ESP32", "C++", "AWS IoT Core"],
+        githubUrl: "https://github.com/Prolayjit-B14",
+    },
+    {
+        slug: "custom-esp32-dev-board",
+        title: "Custom ESP32-S3 Dev Board",
+        tagline: "High-density 4-layer PCB Design",
+        category: "Hardware",
+        date: "2024-06",
+        description: "A comprehensive custom development board built around the ESP32-S3 featuring built-in LiPo charging, USB-C PD, and exposed GPIOs.",
+        problem: "Off-the-shelf ESP32 dev boards lack native battery charging and standard industrial connectors for rapid prototyping.",
+        solution: "Designed and fabbed a custom 4-layer PCB integrating CP2102N, TP4056 charging, and secure boot hardware.",
+        architecture: "Schematic Capture -> Component Selection -> 4-Layer Routing -> JLCPCB Fab",
+        outcome: "Successfully brought up rev 1.0 boards with 100% functionality and strict impedance control constraints met.",
+        features: [
+            "4-layer impedance controlled PCB",
+            "USB-C Power Delivery",
+            "Integrated LiPo management",
+            "Extensive ESD protection"
+        ],
+        technologies: ["KiCAD", "PCB Design", "SMT Assembly", "Hardware Bring-up"],
         githubUrl: "https://github.com/Prolayjit-B14",
     }
 ];

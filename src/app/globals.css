@@ -5,16 +5,17 @@
    ───────────────────────────────────────────────────────── */
 @theme {
   /* Colours — dark (default) */
-  --color-background:           #030712;
+  --color-background:           #020617;
   --color-foreground:           #f1f5f9;
-  --color-primary:              #4ade80;
-  --color-primary-foreground:   #052e16;
-  --color-secondary:            #1c1c27;
+  --color-primary:              #00ff9f;
+  --color-primary-foreground:   #020617;
+  --color-secondary:            #3b82f6;
   --color-secondary-foreground: #f1f5f9;
   --color-muted:                #1e293b;
-  --color-muted-foreground:     #94a3b8;   /* was #6b7280 — now passes WCAG AA */
+  --color-muted-foreground:     #94a3b8;
   --color-border:               #1e293b;
-  --color-card:                 #0f172a;
+  --color-card:                 #0b1220;
+  --color-highlight:            #8b5cf6;
 
   /* Typography scale */
   --font-display: clamp(3rem, 7vw, 6rem);
@@ -31,9 +32,9 @@
   --ease-out:     cubic-bezier(0, 0, 0.2, 1);
 
   /* Glow variants */
-  --glow-sm:  0 0 10px rgba(74, 222, 128, 0.4);
-  --glow-md:  0 0 20px rgba(74, 222, 128, 0.5), 0 0 40px rgba(74, 222, 128, 0.2);
-  --glow-lg:  0 0 30px rgba(74, 222, 128, 0.6), 0 0 60px rgba(74, 222, 128, 0.3);
+  --glow-sm:  0 0 10px rgba(0, 255, 159, 0.4);
+  --glow-md:  0 0 20px rgba(0, 255, 159, 0.5), 0 0 40px rgba(0, 255, 159, 0.2);
+  --glow-lg:  0 0 30px rgba(0, 255, 159, 0.6), 0 0 60px rgba(0, 255, 159, 0.3);
 }
 
 /* ── Light mode overrides ──────────────────────────────────
@@ -91,7 +92,7 @@ body {
 
 /* ── Glassmorphism ─────────────────────────────────────── */
 .glass {
-  background-color: rgba(3, 7, 18, 0.55);
+  background-color: rgba(2, 6, 23, 0.55);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -105,7 +106,7 @@ body {
 }
 
 .glass-card {
-  background-color: rgba(15, 23, 42, 0.7);
+  background-color: rgba(11, 18, 32, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -123,8 +124,8 @@ body {
 /* ── Glow effects ──────────────────────────────────────── */
 .text-glow {
   text-shadow:
-    0 0 12px rgba(74, 222, 128, 0.6),
-    0 0 32px rgba(74, 222, 128, 0.25);
+    0 0 12px rgba(0, 255, 159, 0.6),
+    0 0 32px rgba(0, 255, 159, 0.25);
 }
 
 :root.light .text-glow {
@@ -135,8 +136,8 @@ body {
 
 .bg-glow {
   box-shadow:
-    0 0 20px rgba(74, 222, 128, 0.2),
-    inset 0 0 20px rgba(74, 222, 128, 0.07);
+    0 0 20px rgba(0, 255, 159, 0.2),
+    inset 0 0 20px rgba(0, 255, 159, 0.07);
 }
 
 /* ── Neon grid pattern ─────────────────────────────────── */
@@ -157,11 +158,11 @@ body {
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(74, 222, 128, 0.3);
+  background: rgba(0, 255, 159, 0.3);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(74, 222, 128, 0.6);
+  background: rgba(0, 255, 159, 0.6);
 }
 
 /* ── Skip-navigation ────────────────────────────────────── */

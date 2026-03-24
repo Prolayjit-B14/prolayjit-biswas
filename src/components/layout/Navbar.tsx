@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/components/layout/ThemeProvider";
 import {
@@ -19,14 +19,11 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-    { href: "/projects",   label: "Projects",   icon: Blocks },
-    { href: "/hardware",   label: "Lab",         icon: Cpu },
-    { href: "/hackathons", label: "Hackathons",  icon: Trophy },
-    { href: "/gallery",    label: "Gallery",     icon: ImageIcon },
-    { href: "/education",  label: "Education",   icon: GraduationCap },
-    { href: "/dashboard",  label: "Dashboard",   icon: LayoutDashboard },
-    { href: "/terminal",   label: "Terminal",    icon: TerminalIcon },
-    { href: "/blog",       label: "Blog",        icon: FileText },
+    { href: "/projects",    label: "Projects",   icon: Blocks },
+    { href: "/hardware",    label: "Hardware",   icon: Cpu },
+    { href: "/#skills",     label: "Skills",     icon: TerminalIcon },
+    { href: "/#experience", label: "Experience", icon: GraduationCap },
+    { href: "/blog",        label: "Blog",       icon: FileText },
 ];
 
 export function Navbar() {
@@ -34,6 +31,7 @@ export function Navbar() {
     const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const { theme, toggleTheme } = useTheme();
+    const { scrollYProgress } = useScroll();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
@@ -46,6 +44,12 @@ export function Navbar() {
 
     return (
         <>
+            {/* Global Scroll Progress Bar */}
+            <motion.div
+                style={{ scaleX: scrollYProgress }}
+                className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-emerald-400 to-blue-500 origin-left z-[100]"
+            />
+
             <nav
                 aria-label="Main navigation"
                 className={`fixed top-0 z-50 w-full transition-all duration-300 ${

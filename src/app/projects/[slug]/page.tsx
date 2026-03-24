@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { projects } from "@/data/projects";
-import { ArrowLeft, Cpu, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft, Cpu, Github, ExternalLink, Target, Lightbulb, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
 interface Props {
@@ -58,6 +58,38 @@ export default function ProjectCaseStudy({ params }: Props) {
                             </a>
                         )}
                     </div>
+
+                        {/* Recruiter-friendly Problem/Solution/Impact Section */}
+                        {project.problem && project.solution && (
+                            <div className="grid md:grid-cols-2 gap-6 my-10 not-prose">
+                                <div className="bg-rose-500/5 border border-rose-500/20 rounded-2xl p-6 relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-4 opacity-10"><Target className="w-16 h-16 text-rose-500" /></div>
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <Target className="w-5 h-5 text-rose-400" />
+                                        <h3 className="text-lg font-bold text-rose-100 m-0">The Problem</h3>
+                                    </div>
+                                    <p className="text-sm text-rose-200/70 leading-relaxed m-0">{project.problem}</p>
+                                </div>
+                                <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-2xl p-6 relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 p-4 opacity-10"><Lightbulb className="w-16 h-16 text-emerald-500" /></div>
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <Lightbulb className="w-5 h-5 text-emerald-400" />
+                                        <h3 className="text-lg font-bold text-emerald-100 m-0">The Solution</h3>
+                                    </div>
+                                    <p className="text-sm text-emerald-200/70 leading-relaxed m-0">{project.solution}</p>
+                                </div>
+                                {project.impact && (
+                                    <div className="md:col-span-2 bg-primary/5 border border-primary/20 rounded-2xl p-6 relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 p-4 opacity-10"><TrendingUp className="w-24 h-24 text-primary" /></div>
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <TrendingUp className="w-5 h-5 text-primary" />
+                                            <h3 className="text-lg font-bold text-primary-100 m-0">Impact & Outcomes</h3>
+                                        </div>
+                                        <p className="text-sm text-primary/80 leading-relaxed m-0 font-medium">{project.impact}</p>
+                                    </div>
+                                )}
+                            </div>
+                        )}
 
                     <div className="prose prose-invert prose-lg max-w-none">
                         <h2>Overview</h2>

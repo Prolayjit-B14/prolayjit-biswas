@@ -2,9 +2,24 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
-import { Briefcase, GraduationCap, Trophy, Zap } from "lucide-react";
+import { Briefcase, GraduationCap, Trophy, Zap, LucideIcon } from "lucide-react";
 
-const events = [
+type TimelineEvent = {
+    year: string;
+    title: string;
+    subtitle: string;
+    description: string;
+    icon: LucideIcon;
+    color: string;
+    bg: string;
+    border: string;
+    dot: string;
+    side: "left" | "right";
+    achievement?: string;
+    link?: string;
+};
+
+const events: TimelineEvent[] = [
     {
         year: "2021 – 2023",
         title: "Higher Secondary (Science)",
@@ -15,7 +30,7 @@ const events = [
         bg: "bg-blue-500/10",
         border: "border-blue-500/30",
         dot: "bg-blue-400",
-        side: "right" as const,
+        side: "right",
     },
     {
         year: "2023 – Present",
@@ -27,7 +42,7 @@ const events = [
         bg: "bg-primary/10",
         border: "border-primary/30",
         dot: "bg-primary",
-        side: "left" as const,
+        side: "left",
     },
     {
         year: "Mar 2024",
@@ -39,7 +54,9 @@ const events = [
         bg: "bg-purple-500/10",
         border: "border-purple-500/30",
         dot: "bg-purple-400",
-        side: "right" as const,
+        side: "right",
+        achievement: "Frontend Architecture",
+        link: "https://github.com/Prolayjit-B14"
     },
     {
         year: "Aug 2024",
@@ -51,7 +68,8 @@ const events = [
         bg: "bg-yellow-500/10",
         border: "border-yellow-500/30",
         dot: "bg-yellow-400",
-        side: "left" as const,
+        side: "left",
+        achievement: "National Finalist",
     },
     {
         year: "Feb 2025",
@@ -63,7 +81,8 @@ const events = [
         bg: "bg-rose-500/10",
         border: "border-rose-500/30",
         dot: "bg-rose-400",
-        side: "right" as const,
+        side: "right",
+        achievement: "1st Prize Winner",
     },
     {
         year: "2025 – Now",
@@ -75,7 +94,7 @@ const events = [
         bg: "bg-cyan-500/10",
         border: "border-cyan-500/30",
         dot: "bg-cyan-400",
-        side: "left" as const,
+        side: "left",
     },
 ];
 
@@ -123,16 +142,29 @@ export function Timeline() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.5, delay: index * 0.07 }}
-                                        className="md:hidden flex gap-4 items-start py-4"
+                                        className="md:hidden flex gap-4 items-start py-4 w-full"
                                     >
                                         <div className={`flex-shrink-0 mt-1 p-2.5 rounded-xl ${event.bg} ${event.color} border ${event.border}`}>
                                             <Icon className="w-4 h-4" />
                                         </div>
-                                        <div>
-                                            <p className={`text-[10px] font-bold uppercase tracking-wider ${event.color} mb-0.5`}>{event.year}</p>
+                                        <div className="flex flex-col gap-1 w-full">
+                                            <p className={`text-[10px] font-bold uppercase tracking-wider ${event.color}`}>{event.year}</p>
                                             <h3 className="font-bold text-[#f8fafc] text-sm leading-tight">{event.title}</h3>
-                                            <p className="text-xs text-muted-foreground mb-1">{event.subtitle}</p>
-                                            <p className="text-xs text-[#6b7280] leading-relaxed">{event.description}</p>
+                                            <p className="text-xs text-muted-foreground">{event.subtitle}</p>
+                                            <p className="text-xs text-[#6b7280] leading-relaxed mb-2">{event.description}</p>
+                                            
+                                            <div className="flex items-center gap-3">
+                                                {event.achievement && (
+                                                    <span className={`inline-flex items-center px-2 py-1 rounded bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider font-bold ${event.color}`}>
+                                                        {event.achievement}
+                                                    </span>
+                                                )}
+                                                {event.link && (
+                                                    <a href={event.link} target="_blank" rel="noreferrer" className="text-[10px] text-white/60 hover:text-primary transition-colors uppercase tracking-wider font-bold flex flex-row items-center gap-1">
+                                                        View <span className="text-lg leading-none">&rarr;</span>
+                                                    </a>
+                                                )}
+                                            </div>
                                         </div>
                                     </motion.div>
 
@@ -156,7 +188,20 @@ export function Timeline() {
                                                     </div>
                                                     <h3 className="font-bold text-[#f8fafc] text-sm leading-tight mb-1">{event.title}</h3>
                                                     <p className="text-xs text-muted-foreground mb-2">{event.subtitle}</p>
-                                                    <p className="text-xs text-[#6b7280] leading-relaxed">{event.description}</p>
+                                                    <p className="text-xs text-[#6b7280] leading-relaxed mb-3">{event.description}</p>
+                                                    
+                                                    <div className="flex items-center gap-3">
+                                                        {event.achievement && (
+                                                            <span className={`inline-flex items-center px-2 py-1 rounded bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider font-bold ${event.color}`}>
+                                                                {event.achievement}
+                                                            </span>
+                                                        )}
+                                                        {event.link && (
+                                                            <a href={event.link} target="_blank" rel="noreferrer" className="text-[10px] text-white/60 hover:text-primary transition-colors uppercase tracking-wider font-bold flex flex-row items-center gap-1">
+                                                                View <span className="text-lg leading-none">&rarr;</span>
+                                                            </a>
+                                                        )}
+                                                    </div>
                                                 </motion.div>
                                             )}
                                         </div>
@@ -184,7 +229,20 @@ export function Timeline() {
                                                     </div>
                                                     <h3 className="font-bold text-[#f8fafc] text-sm leading-tight mb-1">{event.title}</h3>
                                                     <p className="text-xs text-muted-foreground mb-2">{event.subtitle}</p>
-                                                    <p className="text-xs text-[#6b7280] leading-relaxed">{event.description}</p>
+                                                    <p className="text-xs text-[#6b7280] leading-relaxed mb-3">{event.description}</p>
+                                                    
+                                                    <div className="flex items-center gap-3">
+                                                        {event.achievement && (
+                                                            <span className={`inline-flex items-center px-2 py-1 rounded bg-white/5 border border-white/10 text-[10px] uppercase tracking-wider font-bold ${event.color}`}>
+                                                                {event.achievement}
+                                                            </span>
+                                                        )}
+                                                        {event.link && (
+                                                            <a href={event.link} target="_blank" rel="noreferrer" className="text-[10px] text-white/60 hover:text-primary transition-colors uppercase tracking-wider font-bold flex flex-row items-center gap-1">
+                                                                View <span className="text-lg leading-none">&rarr;</span>
+                                                            </a>
+                                                        )}
+                                                    </div>
                                                 </motion.div>
                                             )}
                                         </div>

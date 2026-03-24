@@ -9,11 +9,9 @@ import { ArrowRight, Download, Github, Linkedin, ExternalLink, Cpu, Star, Folder
 import Link from "next/link";
 
 const ROLES = [
-    "Electronics Engineer",
-    "Embedded Systems Dev",
-    "IoT Builder",
-    "PCB Designer",
-    "Full-Stack Developer",
+    "VLSI & Embedded Systems Engineer",
+    "Hardware-to-Cloud Architect",
+    "IoT Systems Developer"
 ];
 
 function TypeWriter({ words }: { words: string[] }) {
@@ -58,7 +56,7 @@ const socialLinks = [
 
 export function Hero({ stats }: { stats?: { stars: number, repos: number } }) {
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-20 bg-[#030712]">
+        <section className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-20 bg-[#020617]">
             <ParticleField />
             
             {/* Ambient glows */}
@@ -94,14 +92,14 @@ export function Hero({ stats }: { stats?: { stars: number, repos: number } }) {
                             className="flex flex-col gap-2"
                         >
                             <span className="font-mono text-primary text-sm font-medium tracking-wide">
-                                $ ./hello --world
+                                Hi, I&apos;m
                             </span>
                             <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter text-glow leading-[1.1]">
-                                Prolayjit <br className="hidden lg:block"/> Biswas
+                                Prolayjit<br className="hidden lg:block"/> Biswas
                             </h1>
                         </motion.div>
 
-                        {/* Typewriter tag */}
+                        {/* Subheading / Typewriter tag */}
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -111,15 +109,26 @@ export function Hero({ stats }: { stats?: { stars: number, repos: number } }) {
                             <TypeWriter words={ROLES} />
                         </motion.h2>
 
-                        {/* Tagline */}
+                        {/* Description */}
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.5 }}
                             className="max-w-xl text-[#94a3b8] leading-relaxed text-lg"
                         >
-                            Bridging the gap between low-level hardware design and high-level software architectures. Currently engineering at the edge of embedded logic and full-stack web.
+                            Building intelligent hardware and cloud-connected IoT systems using ESP32, FPGA, and modern fullstack technologies.
                         </motion.p>
+
+                        <motion.div 
+                            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
+                            className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wider text-[#6b7280] mt-1 mb-2"
+                        >
+                            <span className="flex items-center gap-1.5"><Cpu className="w-3.5 h-3.5 text-primary" /> ESP32</span>
+                            <span className="flex items-center gap-1.5"><Cpu className="w-3.5 h-3.5 text-blue-400" /> KiCAD</span>
+                            <span className="flex items-center gap-1.5"><Cpu className="w-3.5 h-3.5 text-purple-400" /> Verilog</span>
+                            <span className="flex items-center gap-1.5"><Code2 className="w-3.5 h-3.5 text-zinc-300" /> Next.js</span>
+                            <span className="flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-rose-400" /> IoT</span>
+                        </motion.div>
 
                         {/* CTA Buttons */}
                         <motion.div
@@ -128,13 +137,15 @@ export function Hero({ stats }: { stats?: { stars: number, repos: number } }) {
                             transition={{ duration: 0.7, delay: 0.65 }}
                             className="flex flex-col sm:flex-row items-center gap-4 mt-2"
                         >
-                            <Link
+                            <motion.a
                                 href="#projects"
-                                className="group flex items-center gap-2.5 rounded-xl bg-primary px-8 py-4 text-sm font-bold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-[0_0_25px_rgba(74,222,128,0.4)]"
+                                animate={{ boxShadow: ["0 0 0px #00ff9f", "0 0 12px #00ff9f", "0 0 0px #00ff9f"] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                className="group flex items-center gap-2.5 rounded-xl bg-primary px-8 py-4 text-sm font-bold text-[#020617] transition-all hover:bg-primary/90"
                             >
                                 <Sparkles className="h-4 w-4" />
                                 View Projects
-                            </Link>
+                            </motion.a>
 
                             <a
                                 href="/resume.pdf"
@@ -244,16 +255,16 @@ export function Hero({ stats }: { stats?: { stars: number, repos: number } }) {
 
                         {/* Floating decorative elements */}
                         <motion.div
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -right-4 top-10 border border-white/10 bg-white/5 backdrop-blur-md rounded-lg p-3 text-xs font-mono text-emerald-400 shadow-xl"
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 3, repeat: Infinity }}
+                            className="absolute -right-4 top-10 border border-white/10 bg-white/5 backdrop-blur-md rounded-lg p-3 text-xs font-mono text-primary shadow-xl"
                         >
                             ✓ Compiled
                         </motion.div>
                         <motion.div
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -left-6 bottom-12 border border-white/10 bg-black/60 backdrop-blur-md rounded-lg p-3 text-xs font-mono text-blue-400 shadow-xl"
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 3, repeat: Infinity }}
+                            className="absolute -left-6 bottom-12 border border-white/10 bg-black/60 backdrop-blur-md rounded-lg p-3 text-xs font-mono text-[#3b82f6] shadow-xl"
                         >
                             sys.check()
                         </motion.div>
@@ -263,7 +274,7 @@ export function Hero({ stats }: { stats?: { stars: number, repos: number } }) {
 
             <Waveform />
             
-            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#030712] to-transparent z-10 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#020617] to-transparent z-10 pointer-events-none" />
         </section>
     );
 }
