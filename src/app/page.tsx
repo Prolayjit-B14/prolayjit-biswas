@@ -1,11 +1,11 @@
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
+import { HardwareProjects } from "@/components/sections/HardwareProjects";
 import { DomainRoles } from "@/components/sections/DomainRoles";
 import { Skills } from "@/components/sections/Skills";
 import { Timeline } from "@/components/sections/Timeline";
-import { OpenSource } from "@/components/sections/OpenSource";
-import { SocialWall } from "@/components/sections/SocialWall";
+import { CommunitySection } from "@/components/sections/CommunitySection";
 import { Contact } from "@/components/sections/Contact";
 import { getGithubData } from "@/lib/github";
 import { getBlogPosts } from "@/lib/blog";
@@ -24,8 +24,11 @@ export default async function Home() {
       {/* 2. Trust Badges (Immediate credibility) */}
       <TrustBar />
 
-      {/* 3. Featured Work (2 best projects) */}
+      {/* 3. Featured Work (Software & IoT) */}
       <FeaturedProjects />
+
+      {/* 4. Deep Hardware & VLSI Stack */}
+      <HardwareProjects />
 
       {/* 4. Core Expertise (Grid) */}
       <DomainRoles />
@@ -36,11 +39,8 @@ export default async function Home() {
       {/* 6. Experience Timeline */}
       <Timeline />
 
-      {/* 8. Open Source / GitHub Activity */}
-      <OpenSource repos={topRepos} />
-
-      {/* 9. Articles / Blog */}
-      <SocialWall posts={topPosts} />
+      {/* 8. Community & Knowledge Sharing */}
+      <CommunitySection repos={topRepos} posts={topPosts} />
 
       {/* 10. Contact CTA */}
       <Contact />

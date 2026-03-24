@@ -2,27 +2,27 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
-import { ExternalLink, Github, Trophy, FileText } from "lucide-react";
+import { ExternalLink, Github, FileText } from "lucide-react";
 import Image from "next/image";
 import { projects } from "@/data/projects";
 import Link from "next/link";
 
-export function FeaturedProjects() {
-    // Select top Software / IoT projects
-    const featuredSlugs = ["smart-agriculture", "delta-iot", "campus-connect"];
-    const featuredWork = projects.filter(p => featuredSlugs.includes(p.slug) || p.category === "Software" || p.category === "IoT");
+export function HardwareProjects() {
+    // Select Hardware / VLSI projects
+    const hardwareSlugs = ["custom-esp32-dev-board", "fpga-32bit-alu", "she-shield"];
+    const hardwareWork = projects.filter(p => hardwareSlugs.includes(p.slug) || p.category === "Hardware" || p.category === "VLSI");
     
-    const displayProjects = featuredWork.slice(0, 3);
+    const displayProjects = hardwareWork.slice(0, 3);
 
     return (
-        <section className="relative py-12 lg:py-16 bg-background border-t border-white/5" id="projects">
+        <section className="relative py-12 lg:py-16 bg-[#02050a] border-t border-white/5" id="hardware">
             <Container>
                 <div className="flex flex-col mb-10 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-3">
-                        Software & IoT Systems
+                        Hardware & VLSI
                     </h2>
                     <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto">
-                        High-impact scalable dashboards and edge intelligence connected pipelines.
+                        Bare-metal engineering, custom PCB design, and FPGA logic synthesis.
                     </p>
                 </div>
 
@@ -35,7 +35,7 @@ export function FeaturedProjects() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: index * 0.1 }}
                             whileHover={{ y: -4 }}
-                            className="flex flex-col bg-[#0b1220] border border-white/10 rounded-2xl overflow-hidden hover:border-primary/50 transition-colors"
+                            className="flex flex-col bg-[#0b1220] border border-white/10 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-colors"
                         >
                             {/* Compact Image Section */}
                             <div className="relative w-full aspect-video bg-black/50 border-b border-white/10">
@@ -47,7 +47,7 @@ export function FeaturedProjects() {
                                         className="object-cover opacity-90"
                                     />
                                 ) : (
-                                    <div className="absolute inset-0 flex items-center justify-center text-primary font-mono text-xs bg-black/80 bg-[url('/circuit-pattern.svg')] bgOverlay">
+                                    <div className="absolute inset-0 flex items-center justify-center text-emerald-400 font-mono text-xs bg-black/80 bg-[url('/circuit-pattern.svg')] bgOverlay">
                                         [ {project.category.toUpperCase()} ]
                                     </div>
                                 )}
@@ -78,11 +78,11 @@ export function FeaturedProjects() {
                                 {/* Compact Action Buttons */}
                                 <div className="flex items-center gap-2 pt-4 border-t border-white/5">
                                     {project.demoUrl ? (
-                                        <a href={project.demoUrl} target="_blank" rel="noreferrer" className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-primary text-[#020617] font-bold rounded hover:bg-primary/90 transition-colors text-xs">
+                                        <a href={project.demoUrl} target="_blank" rel="noreferrer" className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-emerald-500 text-[#020617] font-bold rounded hover:bg-emerald-400 transition-colors text-xs">
                                             <ExternalLink className="w-3 h-3" /> Live
                                         </a>
                                     ) : (
-                                        <Link href={`/projects/${project.slug}`} className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-primary text-[#020617] font-bold rounded hover:bg-primary/90 transition-colors text-xs">
+                                        <Link href={`/projects/${project.slug}`} className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-emerald-500 text-[#020617] font-bold rounded hover:bg-emerald-400 transition-colors text-xs">
                                             <FileText className="w-3 h-3" /> Case Study
                                         </Link>
                                     )}
