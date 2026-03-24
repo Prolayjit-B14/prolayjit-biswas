@@ -16,6 +16,40 @@ export interface Project {
     githubUrl?: string;
     demoUrl?: string;
     imageUrl?: string;
+    
+    // Extended Case Study Fields
+    overview?: string;
+    systemArchitecture?: {
+        sensorLayer?: string[];
+        edgeLayer?: string[];
+        communication?: string[];
+        cloudLayer?: string[];
+        frontend?: string[];
+    };
+    hardwareDesign?: {
+        microcontroller: string;
+        sensors: string;
+        power: string;
+        pcb: string;
+        keyFeatures: string[];
+    };
+    softwareDesign?: {
+        firmware: string;
+        functions: string[];
+        backend: string;
+        frontend: string;
+    };
+    techStackDetailed?: {
+        hardware?: string[];
+        software?: string[];
+        cloud?: string[];
+        protocols?: string[];
+    };
+    gallery?: string[];
+    challenges?: string[];
+    learnings?: string[];
+    futureImprovements?: string[];
+    docUrl?: string; // e.g. Documentation PDF
 }
 
 export const projects: Project[] = [
@@ -135,21 +169,88 @@ export const projects: Project[] = [
     {
         slug: "smart-agriculture",
         title: "Smart Agriculture Monitoring",
-        tagline: "IoT environmental monitoring",
+        tagline: "ESP32 based smart agriculture monitoring system with real-time dashboard.",
         category: "IoT",
         date: "2023-07",
         description: "IoT-based system for monitoring agricultural environments using sensors and automating water pumps based on soil moisture levels.",
-        problem: "Farmers lack real-time soil condition monitoring, leading to water wastage.",
-        solution: "Built ESP32 sensor node with MQTT cloud dashboard.",
-        architecture: "Soil Sensors -> ESP32 -> MQTT Broker -> Node.js API -> Next.js Dashboard",
-        outcome: "Real-time soil moisture insights scaling up to 40% water reduction.",
+        
+        // --- CASE STUDY SECTIONS ---
+        overview: "This project focuses on solving inefficient irrigation. It combines embedded hardware and scalable cloud software to achieve automated monitoring. The system collects data from sensors, processes it at the edge, and displays insights through a cloud dashboard.",
+        
+        problem: "Farmers often lack real-time soil data which leads to:\n• inefficient irrigation\n• crop damage\n• manual monitoring effort\nNeed a low-cost automated monitoring system.",
+        
+        solution: "Designed an IoT-based monitoring system using ESP32 and cloud backend.\nWorkflow:\nSensors → ESP32 → MQTT → Server → Dashboard\nProvides real-time monitoring and alerts.",
+        
+        systemArchitecture: {
+            sensorLayer: ["soil moisture sensor", "temperature sensor"],
+            edgeLayer: ["ESP32 microcontroller"],
+            communication: ["MQTT protocol"],
+            cloudLayer: ["Node.js server", "Firebase database"],
+            frontend: ["Next.js dashboard"]
+        },
+        
+        hardwareDesign: {
+            microcontroller: "ESP32",
+            sensors: "soil moisture, temperature",
+            power: "Li-ion battery",
+            pcb: "PCB designed using KiCAD.",
+            keyFeatures: ["low power consumption", "compact layout", "stable signal routing"]
+        },
+        
+        softwareDesign: {
+            firmware: "Firmware written in C++ using Arduino framework.",
+            functions: ["sensor data collection", "MQTT communication", "data formatting JSON", "WiFi connection management"],
+            backend: "Backend built with Node.js.",
+            frontend: "Frontend dashboard created using Next.js."
+        },
+        
+        techStackDetailed: {
+            hardware: ["ESP32", "PCB (KiCAD)"],
+            software: ["C++", "Node.js", "Next.js"],
+            cloud: ["Firebase"],
+            protocols: ["MQTT", "HTTP"]
+        },
+        
         features: [
-            "Environmental monitoring",
-            "Sensor-based automation",
-            "Real-time alerts"
+            "Real-time sensor monitoring",
+            "Cloud dashboard visualization",
+            "Low-cost hardware design",
+            "Modular architecture",
+            "Scalable backend"
         ],
+        
+        outcome: "Real-time soil moisture insights scaling up to 40% water reduction.",
+        impact: "Successfully built working prototype.\nAchieved:\nreal-time data update\nstable cloud communication\nresponsive dashboard\nLow BOM cost.",
+        
+        gallery: [
+            "https://images.unsplash.com/photo-1592982537447-6f296d9b24e6?w=800&q=80",
+            "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80"
+        ],
+        
+        challenges: [
+            "WiFi stability issues",
+            "sensor calibration tuning",
+            "MQTT message handling",
+            "power optimization"
+        ],
+        
+        learnings: [
+            "real-world IoT architecture",
+            "hardware debugging",
+            "cloud integration"
+        ],
+        
+        futureImprovements: [
+            "mobile app integration",
+            "LoRa connectivity",
+            "AI prediction model",
+            "solar power support"
+        ],
+        
         technologies: ["ESP32", "MQTT", "Node.js", "Next.js"],
         githubUrl: "https://github.com/Prolayjit-B14",
+        demoUrl: "#",
+        docUrl: "#"
     },
     {
         slug: "fpga-32bit-alu",
