@@ -8,103 +8,108 @@ import { cn } from "@/lib/utils";
 const EXPERTISE = [
     {
         title: "Embedded Systems",
-        desc: "Programming microcontrollers with C/C++ and RTOS.",
-        tools: "C/C++ • FreeRTOS • STM32",
+        desc: "High-performance firmware development with C/C++ and Real-Time Operating Systems.",
+        tools: "ARM • FreeRTOS • STM32",
         icon: Cpu,
-        color: "text-blue-400",
-        bg: "from-blue-500/10 to-transparent",
-        border: "border-blue-500/20 hover:border-blue-400/40",
+        accent: "#ff0055",
     },
     {
-        title: "IoT Systems",
-        desc: "Sensor to cloud architecture using MQTT.",
-        tools: "MQTT • BLE • Edge Compute",
+        title: "IoT Architecture",
+        desc: "End-to-end sensor-to-cloud security, data pipelines, and edge compute nodes.",
+        tools: "MQTT • LoRaWAN • Azure",
         icon: Wifi,
-        color: "text-violet-400",
-        bg: "from-violet-500/10 to-transparent",
-        border: "border-violet-500/20 hover:border-violet-400/40",
+        accent: "#00f2ff",
     },
     {
-        title: "PCB Design",
-        desc: "High-density multi-layer board routing and fab.",
-        tools: "KiCAD • Impedance • SMT",
+        title: "PCB Engineering",
+        desc: "Multi-layer high-speed digital design, impedance matching, and DFM optimization.",
+        tools: "KiCAD • Altium • SMT",
         icon: CircuitBoard,
-        color: "text-emerald-400",
-        bg: "from-emerald-500/10 to-transparent",
-        border: "border-emerald-500/20 hover:border-emerald-400/40",
+        accent: "#ff0055",
     },
     {
-        title: "VLSI Design",
-        desc: "Digital logic design using RTL and FPGA synthesis.",
+        title: "VLSI & RTL",
+        desc: "Digital logic synthesis, Verilog modeling, and FPGA hardware acceleration.",
         tools: "Verilog • FPGA • Vivado",
         icon: Zap,
-        color: "text-yellow-400",
-        bg: "from-yellow-500/10 to-transparent",
-        border: "border-yellow-500/20 hover:border-yellow-400/40",
+        accent: "#ff0055",
     },
     {
-        title: "Fullstack Web",
-        desc: "Scalable telemetry dashboards and backend APIs.",
-        tools: "Next.js • Node.js • SQL",
+        title: "Fullstack Systems",
+        desc: "Scalable real-time telemetry dashboards and industrial automation backends.",
+        tools: "Next.js • Node.js • Grafana",
         icon: LayoutTemplate,
-        color: "text-cyan-400",
-        bg: "from-cyan-500/10 to-transparent",
-        border: "border-cyan-500/20 hover:border-cyan-400/40",
+        accent: "#00f2ff",
     },
     {
-        title: "AI Integration",
-        desc: "LLMs and Computer Vision for edge analytics.",
-        tools: "TensorFlow • GenAI • OpenCV",
+        title: "Edge Intelligence",
+        desc: "Integrating neural networks and computer vision for autonomous edge analytics.",
+        tools: "TinyML • OpenCV • PyTorch",
         icon: Bot,
-        color: "text-rose-400",
-        bg: "from-rose-500/10 to-transparent",
-        border: "border-rose-500/20 hover:border-rose-400/40",
+        accent: "#00f2ff",
     },
 ];
 
 export function DomainRoles() {
     return (
-        <section className="relative py-12 lg:py-16 bg-[#02050a] overflow-hidden" id="expertise">
+        <section className="relative py-32 bg-[#020617] overflow-hidden" id="expertise">
             <Container>
                 {/* Header */}
-                <div className="flex flex-col items-center text-center mb-10">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-white">
-                        Core Expertise
-                    </h2>
+                <div className="flex flex-col items-center text-center mb-20">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="text-[#00f2ff] font-black text-[10px] uppercase tracking-[0.4em] mb-6 bg-[#00f2ff]/5 px-5 py-2 rounded-full border border-[#00f2ff]/10"
+                    >
+                        Versatile Systems Engineer
+                    </motion.div>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-4xl md:text-7xl font-black tracking-tighter text-white mb-6 uppercase leading-none"
+                    >
+                        Core <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f2ff] to-[#ff0055] font-black">Expertise</span>
+                    </motion.h2>
+                    <div className="w-24 h-1 bg-gradient-to-r from-[#00f2ff] to-[#ff0055] rounded-full" />
                 </div>
 
                 {/* 3x2 Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 auto-rows-fr">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 auto-rows-fr">
                     {EXPERTISE.map((domain, i) => {
                         const Icon = domain.icon;
                         return (
                             <motion.div
                                 key={domain.title}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: i * 0.05 }}
+                                transition={{ duration: 0.5, delay: i * 0.1 }}
                                 className={cn(
-                                    "flex flex-col p-5 rounded-2xl border transition-colors bg-[#0b1220]",
-                                    domain.border
+                                    "group relative flex flex-col p-8 lg:p-10 rounded-[2.5rem] border border-white/5 transition-all duration-500 bg-[#0b1220]/40 backdrop-blur-3xl hover:border-white/10 hover:shadow-[0_0_40px_rgba(0,0,0,0.5)]"
                                 )}
                             >
-                                <div className="flex items-center gap-3 mb-3">
-                                    <div className={cn("p-2 rounded-lg bg-black/40 border border-white/5", domain.color)}>
-                                        <Icon className="w-5 h-5" />
+                                <div className="flex items-center gap-5 mb-8">
+                                    <div 
+                                        className="p-3.5 rounded-2xl bg-white/5 border border-white/10 shadow-2xl transition-transform group-hover:scale-110"
+                                        style={{ color: domain.accent }}
+                                    >
+                                        <Icon className="w-6 h-6" />
                                     </div>
-                                    <h3 className="text-lg font-bold text-white tracking-wide">
+                                    <h3 className="text-xl md:text-2xl font-black text-white tracking-tighter uppercase leading-none">
                                         {domain.title}
                                     </h3>
                                 </div>
                                 
-                                <p className="text-zinc-400 leading-relaxed mb-4 flex-1 text-sm">
-                                    {domain.desc}
+                                <p className="text-xs text-zinc-400 leading-relaxed mb-8 flex-1 font-medium italic">
+                                    "{domain.desc}"
                                 </p>
                                 
-                                <p className={cn("text-[10px] font-bold uppercase tracking-widest mt-auto", domain.color)}>
-                                    {domain.tools}
-                                </p>
+                                <div className="flex items-center gap-3 pt-6 border-t border-white/5">
+                                    <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: domain.accent }} />
+                                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600 group-hover:text-zinc-400 transition-colors">
+                                        {domain.tools}
+                                    </p>
+                                </div>
                             </motion.div>
                         );
                     })}

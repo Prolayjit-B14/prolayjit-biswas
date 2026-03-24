@@ -2,109 +2,130 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
-import { Cpu, Code2, BrainCircuit, Wrench, Layers } from "lucide-react";
+import { 
+    SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, 
+    SiDocker, SiFirebase, SiPostman, SiFigma, 
+    SiGit, SiLinux, SiGithub, SiCplusplus,
+    SiEspressif, SiStmicroelectronics,
+    SiTensorflow, SiPytorch, SiOpencv, SiPython
+} from "react-icons/si";
+import { Cpu, Layers, BrainCircuit, Wrench, CircuitBoard } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const CATEGORIES = [
+const SKILL_GROUPS = [
     {
         title: "Systems Hardware",
         icon: Cpu,
-        color: "text-rose-400",
-        glow: "shadow-[0_0_20px_rgba(251,113,133,0.3)]",
-        bg: "bg-rose-500/5 border-rose-500/20",
-        skills: ["ESP32/STM32", "FPGA Verilog", "PCB Design", "RTOS", "VLSI RTL", "Altium/KiCAD"]
+        accent: "#ff0055", // Rose
+        items: [
+            { name: "Verilog RTL", icon: CircuitBoard },
+            { name: "PCB Design", icon: Cpu }, // Custom fallback
+            { name: "FPGA Synthesis", icon: CircuitBoard },
+            { name: "VLSI Architecture", icon: Cpu }
+        ]
     },
     {
-        title: "IoT & Cloud",
+        title: "Embedded & IoT",
         icon: Layers,
-        color: "text-blue-400",
-        glow: "shadow-[0_0_20px_rgba(96,165,250,0.3)]",
-        bg: "bg-blue-500/5 border-blue-500/20",
-        skills: ["MQTT/HTTP", "Node.js", "Firebase", "Next.js", "TypeScript", "Docker"]
+        accent: "#00f2ff", // Cyan
+        items: [
+            { name: "ESP32/S3", icon: SiEspressif },
+            { name: "STM32/HAL", icon: SiStmicroelectronics },
+            { name: "FreeRTOS", icon: Cpu },
+            { name: "MQTT/HTTP", icon: Layers }
+        ]
+    },
+    {
+        title: "Software & Cloud",
+        icon: Wrench,
+        accent: "#00f2ff", // Cyan
+        items: [
+            { name: "Next.js 15", icon: SiNextdotjs },
+            { name: "TypeScript", icon: SiTypescript },
+            { name: "Node.js/Express", icon: SiNodedotjs },
+            { name: "Docker/Vercel", icon: SiDocker }
+        ]
     },
     {
         title: "Intelligence",
         icon: BrainCircuit,
-        color: "text-emerald-400",
-        glow: "shadow-[0_0_20px_rgba(52,211,153,0.3)]",
-        bg: "bg-emerald-500/5 border-emerald-500/20",
-        skills: ["TensorFlow", "OpenCV", "PyTorch", "NLP", "Gemini AI", "Computer Vision"]
-    },
-    {
-        title: "Engineering Tools",
-        icon: Wrench,
-        color: "text-amber-400",
-        glow: "shadow-[0_0_20px_rgba(251,191,36,0.3)]",
-        bg: "bg-amber-500/5 border-amber-500/20",
-        skills: ["Git/GitHub", "Linux/Bash", "MATLAB", "Postman", "Vercel", "Figma"]
+        accent: "#ff0055", // Rose
+        items: [
+            { name: "Edge AI", icon: SiTensorflow },
+            { name: "OpenCV", icon: SiOpencv },
+            { name: "PyTorch", icon: SiPytorch },
+            { name: "Python", icon: SiPython }
+        ]
     }
 ];
 
 export function Skills() {
     return (
-        <section className="relative h-screen min-h-[700px] bg-[#02050a] flex items-center overflow-hidden py-20" id="skills">
-            {/* Background Ambient Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.03)_0,transparent_70%)] pointer-events-none" />
+        <section className="relative h-screen min-h-[800px] bg-[#020617] flex items-center overflow-hidden py-14" id="skills">
+            {/* Ambient Background */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,242,255,0.02)_0,transparent_70%)] pointer-events-none" />
 
-            <Container className="relative z-10">
-                <div className="max-w-4xl mx-auto">
-                    <div className="flex flex-col items-center text-center mb-16">
+            <Container className="relative z-10 w-full">
+                <div className="max-w-6xl mx-auto px-4">
+                    {/* Header Section */}
+                    <div className="flex flex-col mb-16">
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-[0.3em] mb-4"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="flex items-center gap-3 mb-6"
                         >
-                            Technical Intelligence
+                            <div className="h-0.5 w-12 bg-[#00f2ff] rounded-full" />
+                            <span className="text-[10px] font-black text-[#00f2ff] uppercase tracking-[0.4em]">Core Technical Stack</span>
                         </motion.div>
-                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 text-white leading-none">
-                            CORE <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">STACK</span>
+                        <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-white uppercase leading-none">
+                            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f2ff] to-[#ff0055]">Intelligence</span>
                         </h2>
-                        <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full" />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                        {CATEGORIES.map((category, index) => {
-                            const Icon = category.icon;
-                            return (
-                                <motion.div
-                                    key={category.title}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                                    className={cn(
-                                        "group relative p-6 rounded-[2rem] border transition-all duration-500 overflow-hidden",
-                                        category.bg,
-                                        "hover:bg-opacity-10 hover:shadow-2xl",
-                                        category.glow
-                                    )}
-                                >
-                                    {/* Decorative Icon Background */}
-                                    <Icon className="absolute -bottom-4 -right-4 w-24 h-24 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity rotate-12" />
-
-                                    <div className="relative z-10">
-                                        <div className="flex items-center gap-3 mb-6">
-                                            <div className={cn("p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform shadow-lg", category.color)}>
-                                                <Icon className="w-5 h-5" />
-                                            </div>
-                                            <h3 className="text-lg font-black text-white tracking-wider uppercase">{category.title}</h3>
-                                        </div>
-                                        
-                                        <div className="flex flex-wrap gap-2">
-                                            {category.skills.map(skill => (
-                                                <motion.span
-                                                    key={skill}
-                                                    whileHover={{ scale: 1.05, x: 2 }}
-                                                    className="px-3 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-lg bg-black/40 border border-white/5 text-zinc-400 hover:text-white hover:border-white/20 transition-all cursor-default"
-                                                >
-                                                    {skill}
-                                                </motion.span>
-                                            ))}
-                                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                        {SKILL_GROUPS.map((group, gIdx) => (
+                            <motion.div
+                                key={group.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: gIdx * 0.1 }}
+                                className="group relative bg-[#0b1220]/40 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-8 hover:border-white/20 transition-all duration-500 overflow-hidden"
+                            >
+                                {/* Group Title & Icon */}
+                                <div className="flex items-center gap-4 mb-10 pb-6 border-b border-white/5">
+                                    <div 
+                                        className="p-3 rounded-2xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform"
+                                        style={{ color: group.accent }}
+                                    >
+                                        <group.icon className="w-5 h-5" />
                                     </div>
-                                </motion.div>
-                            );
-                        })}
+                                    <h3 className="text-[11px] font-black text-white uppercase tracking-[0.2em]">{group.title}</h3>
+                                </div>
+
+                                {/* Skills Grid */}
+                                <div className="grid grid-cols-2 gap-4">
+                                    {group.items.map((skill, sIdx) => (
+                                        <motion.div
+                                            key={skill.name}
+                                            whileHover={{ y: -3 }}
+                                            className="flex flex-col items-start gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.07] hover:border-white/10 transition-all"
+                                        >
+                                            <div className="text-zinc-500 group-hover:text-white transition-colors">
+                                                <skill.icon className="w-6 h-6" />
+                                            </div>
+                                            <span className="text-[9px] font-black text-zinc-400 uppercase tracking-widest line-clamp-1 leading-tight group-hover:text-white transition-colors">
+                                                {skill.name}
+                                            </span>
+                                        </motion.div>
+                                    ))}
+                                </div>
+
+                                {/* Decorative Watermark */}
+                                <span className="absolute -bottom-2 -right-2 text-[60px] font-black text-white/[0.02] select-none pointer-events-none group-hover:text-white/[0.04] transition-colors">
+                                    0{gIdx + 1}
+                                </span>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </Container>

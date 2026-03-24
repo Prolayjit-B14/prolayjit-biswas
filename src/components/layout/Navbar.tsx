@@ -14,11 +14,10 @@ import {
 } from "lucide-react";
 
 const ECOSYSTEM_ITEMS = [
-    { href: "/hardware-lab", label: "Hardware Lab", icon: FlaskConical, color: "text-rose-400" },
-    { href: "/research",     label: "Research",     icon: Microscope,   color: "text-blue-400" },
-    { href: "/workflow",     label: "Workflow",     icon: GitBranch,    color: "text-emerald-400" },
-    { href: "/gallery",      label: "Gallery",      icon: ImageIcon,    color: "text-purple-400" },
-    { href: "/achievements", label: "Achievements", icon: Award,        color: "text-amber-400" },
+    { href: "/hardware-lab", label: "Hardware Lab", icon: FlaskConical, color: "text-[#ff0055]" },
+    { href: "/research",     label: "Research",     icon: Microscope,   color: "text-[#00f2ff]" },
+    { href: "/workflow",     label: "Workflow",     icon: GitBranch,    color: "text-[#00f2ff]" },
+    { href: "/achievements", label: "Achievements", icon: Award,        color: "text-[#00f2ff]" },
 ];
 
 export function Navbar() {
@@ -43,7 +42,7 @@ export function Navbar() {
             {/* Global Scroll Progress Bar */}
             <motion.div
                 style={{ scaleX: scrollYProgress }}
-                className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-emerald-400 to-blue-500 origin-left z-[100]"
+                className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00f2ff] via-[#ff0055] to-[#00f2ff] origin-left z-[100]"
             />
 
             <nav
@@ -58,21 +57,21 @@ export function Navbar() {
 
                     {/* Logo - Vibrant Gradient */}
                     <Link href="/" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
-                        <div className="relative h-11 w-11 rounded-xl bg-gradient-to-br from-blue-600 to-emerald-500 p-[1px] group-hover:scale-110 transition-transform duration-500">
+                        <div className="relative h-11 w-11 rounded-xl bg-gradient-to-br from-[#00f2ff] to-[#ff0055] p-[1px] group-hover:scale-110 transition-transform duration-500">
                             <div className="h-full w-full rounded-xl bg-[#020617] flex items-center justify-center">
-                                <Cpu className="h-6 w-6 text-white group-hover:text-emerald-400 transition-colors" />
+                                <Cpu className="h-6 w-6 text-white group-hover:text-[#00f2ff] transition-colors" />
                             </div>
                         </div>
-                        <span className="text-2xl font-black tracking-tighter text-white">PB<span className="text-emerald-500 animate-pulse">.</span></span>
+                        <span className="text-2xl font-black tracking-tighter text-white uppercase">PB<span className="text-[#00f2ff] animate-pulse">.</span></span>
                     </Link>
 
                     {/* Desktop Navigation - Colorful Icons */}
                     <div className="hidden lg:flex items-center gap-1.5 p-1.5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md">
                         {[
-                            { href: "/#projects",    label: "Projects",     icon: Blocks, color: "text-rose-400" },
-                            { href: "/architecture", label: "Architecture", icon: LayoutDashboard, color: "text-blue-400" },
-                            { href: "/#skills",      label: "Skills",       icon: TerminalIcon, color: "text-emerald-400" },
-                            { href: "/#experience",  label: "Experience",   icon: GraduationCap, color: "text-amber-400" },
+                            { href: "/#projects",    label: "Projects",     icon: Blocks, color: "text-[#ff0055]" },
+                            { href: "/architecture", label: "Architecture", icon: LayoutDashboard, color: "text-[#00f2ff]" },
+                            { href: "/#skills",      label: "Skills",       icon: TerminalIcon, color: "text-[#00f2ff]" },
+                            { href: "/#experience",  label: "Experience",   icon: GraduationCap, color: "text-[#ff0055]" },
                         ].map(({ href, label, icon: Icon, color }) => (
                             <Link
                                 key={href}
@@ -143,7 +142,7 @@ export function Navbar() {
 
                             <a
                                 href="mailto:prolayjitbiswas2004@gmail.com"
-                                className="hidden sm:flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-600 px-6 py-2.5 text-xs font-black text-white transition-all hover:scale-105 hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] uppercase tracking-widest"
+                                className="hidden sm:flex items-center gap-2 rounded-xl bg-white text-black px-6 py-2.5 text-[10px] font-black transition-all hover:bg-[#00f2ff] hover:text-white uppercase tracking-widest shadow-2xl"
                             >
                                 <Send className="h-3.5 w-3.5" />
                                 Hire Me
@@ -176,10 +175,10 @@ export function Navbar() {
                             <div className="grid gap-1">
                                 <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] mb-2 px-2">Navigation</p>
                                 {[
-                                    { href: "/#projects",    label: "Projects",     icon: Blocks, color: "text-rose-400" },
-                                    { href: "/architecture", label: "Architecture", icon: LayoutDashboard, color: "text-blue-400" },
-                                    { href: "/#skills",      label: "Skills",       icon: TerminalIcon, color: "text-emerald-400" },
-                                    { href: "/#experience",  label: "Experience",   icon: GraduationCap, color: "text-amber-400" },
+                                    { href: "/#projects",    label: "Projects",     icon: Blocks, color: "text-[#ff0055]" },
+                                    { href: "/architecture", label: "Architecture", icon: LayoutDashboard, color: "text-[#00f2ff]" },
+                                    { href: "/#skills",      label: "Skills",       icon: TerminalIcon, color: "text-[#00f2ff]" },
+                                    { href: "/#experience",  label: "Experience",   icon: GraduationCap, color: "text-[#ff0055]" },
                                 ].map(({ href, label, icon: Icon, color }) => (
                                     <Link
                                         key={href}

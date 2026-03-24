@@ -10,13 +10,11 @@ import { ProjectCard } from "@/components/projects/ProjectCard";
 import Link from "next/link";
 
 const CATEGORIES = [
-    { id: "Hardware", label: "Hardware", icon: Box, color: "bg-rose-500", text: "text-rose-400" },
-    { id: "Software", label: "Software", icon: Globe, color: "bg-blue-500", text: "text-blue-400" },
-    { id: "IoT",      label: "IoT",      icon: Zap,   color: "bg-emerald-500", text: "text-emerald-400" },
-    { id: "AI",       label: "AI",       icon: Binary, color: "bg-purple-500", text: "text-purple-400" },
-    { id: "VLSI",     label: "VLSI",     icon: Layers, color: "bg-amber-500", text: "text-amber-400" },
-    { id: "Embedded", label: "Embedded", icon: Cpu,    color: "bg-indigo-500", text: "text-indigo-400" },
-    { id: "PCB",      label: "PCB Hub",  icon: CircuitBoard, color: "bg-cyan-500", text: "text-cyan-400" },
+    { id: "Hardware", label: "SILICON & SYSTEMS", icon: Box, accent: "#ff0055" },
+    { id: "Software", label: "CLOUD & SOFTWARE", icon: Globe, accent: "#00f2ff" },
+    { id: "IoT",      label: "EDGE INTELLIGENCE", icon: Zap,   accent: "#00f2ff" },
+    { id: "AI",       label: "NEURAL NETWORKS",  icon: Binary, accent: "#ff0055" },
+    { id: "VLSI",     label: "CHIP SYNTHESIS",   icon: Layers, accent: "#ff0055" },
 ];
 
 export function UnifiedProjects() {
@@ -38,36 +36,37 @@ export function UnifiedProjects() {
                         Engineering Portfolio
                     </motion.div>
                     
-                    <h2 className="text-4xl md:text-5xl font-black text-white mb-8 tracking-tighter uppercase text-center">
-                        The <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-blue-400 to-emerald-400">Project Matrix</span>
-                    </h2>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-4xl md:text-7xl font-black text-white mb-12 tracking-tighter uppercase text-center leading-none"
+                    >
+                        Project <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff0055] via-[#00f2ff] to-[#ff0055]">Matrix</span>
+                    </motion.h2>
 
                     {/* Industrial Tab Control */}
-                    <div className="w-full max-w-4xl overflow-x-auto no-scrollbar pb-2">
-                        <div className="flex items-center justify-center min-w-max gap-1 p-1.5 bg-[#0b1220] border border-white/10 rounded-2xl">
+                    <div className="w-full max-w-5xl overflow-x-auto no-scrollbar pb-4">
+                        <div className="flex items-center justify-center min-w-max gap-2 p-2 bg-[#0b1220]/40 border border-white/5 rounded-[2rem] backdrop-blur-3xl">
                             {CATEGORIES.map((cat) => (
                                 <button
                                     key={cat.id}
                                     onClick={() => setActiveTab(cat.id)}
                                     className={cn(
-                                        "group flex items-center gap-2.5 px-5 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all relative whitespace-nowrap",
+                                        "group flex items-center gap-3 px-6 py-3.5 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all relative whitespace-nowrap",
                                         activeTab === cat.id ? "text-white" : "text-zinc-500 hover:text-zinc-300"
                                     )}
                                 >
                                     {activeTab === cat.id && (
                                         <motion.div
-                                            layoutId="projectTabGlow"
-                                            className={cn("absolute inset-0 rounded-xl shadow-2xl opacity-20", cat.color)}
-                                        />
-                                    )}
-                                    {activeTab === cat.id && (
-                                        <motion.div
                                             layoutId="projectTabActive"
-                                            className={cn("absolute inset-0 rounded-xl border border-white/20", cat.color)}
-                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                            className="absolute inset-0 rounded-2xl border border-white/10 bg-white/[0.03]"
+                                            transition={{ type: "spring", bounce: 0.1, duration: 0.5 }}
                                         />
                                     )}
-                                    <cat.icon className={cn("relative z-10 w-3.5 h-3.5 transition-colors", activeTab === cat.id ? "text-white" : "group-hover:" + cat.text)} />
+                                    <div 
+                                        className="relative z-10 w-2 h-2 rounded-full transition-all"
+                                        style={{ backgroundColor: activeTab === cat.id ? cat.accent : '#27272a' }}
+                                    />
                                     <span className="relative z-10">{cat.label}</span>
                                 </button>
                             ))}
@@ -102,7 +101,7 @@ export function UnifiedProjects() {
                             ) : (
                                 <div className="h-full min-h-[300px] flex flex-col items-center justify-center p-12 text-center rounded-[3rem] border-2 border-dashed border-white/5 bg-white/[0.02]">
                                     <div className="relative mb-6">
-                                        <div className="absolute inset-0 blur-3xl opacity-20 bg-blue-500 animate-pulse" />
+                                        <div className="absolute inset-0 blur-3xl opacity-20 bg-[#00f2ff] animate-pulse" />
                                         <Microscope className="relative w-16 h-16 text-zinc-700" />
                                     </div>
                                     <p className="text-[10px] font-black uppercase text-zinc-600 tracking-[0.3em] mb-2">Technical Analysis Complete</p>

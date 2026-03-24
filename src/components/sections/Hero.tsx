@@ -14,43 +14,23 @@ const socialLinks = [
 ];
 
 const trustIndicators = [
-    { label: "SIH Finalist", icon: Trophy, color: "text-rose-400" },
-    { label: "MAKATHON Winner", icon: Trophy, color: "text-amber-400" },
-    { label: "6+ Projects", icon: Blocks, color: "text-emerald-400" },
+    { label: "SIH National Finalist", icon: Trophy, color: "text-[#ff0055]" },
+    { label: "MAKATHON '25 Winner", icon: Trophy, color: "text-[#00f2ff]" },
+    { label: "Hardware-to-Cloud Expert", icon: Blocks, color: "text-zinc-400" },
 ];
 
 export function Hero() {
     return (
         <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden bg-[#020617]">
             {/* Animated Mesh Gradient Background */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 bg-[#020617]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,242,255,0.05)_0,transparent_50%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(255,0,85,0.05)_0,transparent_50%)]" />
                 <motion.div 
-                    animate={{ 
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.5, 0.3],
-                        x: [0, 100, 0],
-                        y: [0, -50, 0]
-                    }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="absolute -top-[20%] -left-[10%] w-[70%] h-[70%] bg-blue-600/20 rounded-full blur-[120px]" 
-                />
-                <motion.div 
-                    animate={{ 
-                        scale: [1.2, 1, 1.2],
-                        opacity: [0.2, 0.4, 0.2],
-                        x: [0, -100, 0],
-                        y: [0, 50, 0]
-                    }}
-                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                    className="absolute -bottom-[20%] -right-[10%] w-[70%] h-[70%] bg-emerald-500/15 rounded-full blur-[120px]" 
-                />
-                <motion.div 
-                    animate={{ 
-                        opacity: [0.1, 0.3, 0.1],
-                        scale: [0.8, 1.1, 0.8]
-                    }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-purple-600/10 rounded-full blur-[100px]" 
+                    animate={{ opacity: [0.05, 0.1, 0.05] }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" 
                 />
             </div>
 
@@ -99,9 +79,9 @@ export function Hero() {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="text-4xl md:text-7xl font-black tracking-tighter text-white mb-4 leading-[0.95]"
+                                className="text-4xl md:text-8xl font-black tracking-tighter text-white mb-6 leading-[0.85]"
                             >
-                                Prolayjit <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Biswas</span>
+                                Prolayjit <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f2ff] via-[#00f2ff] to-[#ff0055]">Biswas</span>
                             </motion.h1>
 
                             <motion.div
@@ -111,12 +91,12 @@ export function Hero() {
                                 className="flex flex-wrap justify-center gap-3 mb-6"
                             >
                                 {[
-                                    { tag: 'VLSI Design', color: 'text-rose-400' },
-                                    { tag: 'Embedded IoT', color: 'text-blue-400' },
-                                    { tag: 'Cloud Systems', color: 'text-emerald-400' }
+                                    { tag: 'VLSI Synthesis', color: 'text-[#ff0055]' },
+                                    { tag: 'Embedded IoT', color: 'text-[#00f2ff]' },
+                                    { tag: 'Cloud Systems', color: 'text-[#00f2ff]' }
                                 ].map((item, idx) => (
                                     <span key={item.tag} className={cn(
-                                        "flex items-center font-mono text-[10px] uppercase tracking-widest last:border-0 border-r border-white/10 pr-3 last:pr-0",
+                                        "flex items-center font-mono text-[9px] uppercase tracking-[0.3em] last:border-0 border-r border-white/10 pr-4 last:pr-0",
                                         item.color
                                     )}>
                                         {item.tag}
@@ -128,21 +108,21 @@ export function Hero() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5 }}
-                                className="text-zinc-400 text-sm md:text-lg max-w-xl leading-relaxed mb-8 font-medium"
+                                className="text-zinc-400 text-sm md:text-lg max-w-xl leading-relaxed mb-10 font-medium"
                             >
-                                Synthesizing <span className="text-rose-400 font-black italic">silicon logic</span> & <span className="text-blue-400 font-black italic">cloud telemetry</span>. From FPGA prototyping to real-time industrial dashboards.
+                                Synthesizing <span className="text-[#ff0055] font-black italic">high-performance silicon</span> & <span className="text-[#00f2ff] font-black italic">distributed cloud telemetry</span>. Engineering the next generation of industrial edge intelligence.
                             </motion.p>
 
                             <div className="flex flex-col sm:flex-row items-center gap-4 mb-10">
                                 <Link
                                     href="#projects"
-                                    className="relative group/btn flex items-center justify-center gap-2 rounded-xl bg-white text-[#020617] px-8 py-3.5 text-xs font-black transition-all hover:scale-105 active:scale-95 w-full sm:w-auto uppercase tracking-widest overflow-hidden"
+                                    className="relative group/btn flex items-center justify-center gap-2 rounded-xl bg-white text-[#020617] px-10 py-4 text-xs font-black transition-all hover:scale-105 active:scale-95 w-full sm:w-auto uppercase tracking-widest overflow-hidden"
                                 >
-                                    <span className="relative z-10 flex items-center gap-2 text-primary-foreground">
-                                        Explore Lab
+                                    <span className="relative z-10 flex items-center gap-2">
+                                        Exploration Lab
                                         <ExternalLink className="w-3.5 h-3.5" />
                                     </span>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-blue-400 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-[#00f2ff] to-[#ff0055] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
                                 </Link>
 
                                 <a

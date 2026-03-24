@@ -8,9 +8,9 @@ import { Send, MapPin, Mail, Phone, CheckCircle, Loader2, AlertCircle, Calendar 
 type Status = "idle" | "loading" | "success" | "error";
 
 const CONTACTS = [
-    { icon: Mail,    label: "Email",    value: "prolayjitbiswas14112004@gmail.com", href: "mailto:prolayjitbiswas14112004@gmail.com" },
-    { icon: Phone,   label: "Phone",    value: "+91 93396 15464",                    href: "tel:+919339615464" },
-    { icon: MapPin,  label: "Location", value: "Kolkata, West Bengal, India",        href: undefined },
+    { icon: Mail,    label: "Email",    value: "prolayjitbiswas14112004@gmail.com", href: "mailto:prolayjitbiswas14112004@gmail.com", accent: "#00f2ff" },
+    { icon: Phone,   label: "Phone",    value: "+91 93396 15464",                    href: "tel:+919339615464", accent: "#ff0055" },
+    { icon: MapPin,  label: "Location", value: "Kolkata, WB // IND",        href: undefined, accent: "#00f2ff" },
 ];
 
 export function Contact() {
@@ -53,35 +53,41 @@ export function Contact() {
         }
     };
 
-    const inputCls = "w-full border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-[#4b5563] text-[#f8fafc] text-sm bg-[#0f172a]/80";
+    const inputCls = "w-full border border-white/5 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#00f2ff]/40 focus:ring-1 focus:ring-[#00f2ff]/10 transition-all placeholder:text-zinc-600 text-white text-sm bg-[#0f172a]/40 backdrop-blur-3xl font-medium";
 
     return (
-        <section id="contact" className="relative h-screen bg-background z-10 border-t border-white/5 flex items-center overflow-hidden">
+        <section id="contact" className="relative h-screen bg-[#020617] flex items-center overflow-hidden py-32">
             <Container>
                 <div className="flex flex-col md:flex-row gap-14 items-center justify-between">
-                    {/* Left Info */}
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         className="md:w-5/12"
                     >
-                        <h2 className="text-3xl md:text-6xl font-black tracking-tighter mb-8 text-white uppercase">
-                            Contact<span className="text-blue-500">.</span>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            className="text-[#00f2ff] font-black text-[10px] uppercase tracking-[0.4em] mb-6 bg-[#00f2ff]/5 px-5 py-2 rounded-full border border-[#00f2ff]/10 w-fit"
+                        >
+                            Signal Origin
+                        </motion.div>
+                        <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-10 text-white uppercase leading-none">
+                            Open <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f2ff] to-[#ff0055]">Channel</span>
                         </h2>
 
-                        <div className="space-y-5">
-                            {CONTACTS.map(({ icon: Icon, label, value, href }) => (
-                                <div key={label} className="flex items-center gap-4">
-                                    <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                                        <Icon className="h-4 w-4 text-primary" />
+                        <div className="space-y-6">
+                            {CONTACTS.map(({ icon: Icon, label, value, href, accent }) => (
+                                <div key={label} className="flex items-center gap-6 group">
+                                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 transition-all group-hover:scale-110 shadow-2xl" style={{ color: accent }}>
+                                        <Icon className="h-5 w-5" />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-0.5">{label}</p>
+                                        <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em] mb-1">{label}</p>
                                         {href ? (
-                                            <a href={href} className="text-sm text-[#f8fafc] hover:text-primary transition-colors">{value}</a>
+                                            <a href={href} className="text-sm font-black text-white hover:opacity-70 transition-all tracking-tight">{value}</a>
                                         ) : (
-                                            <span className="text-sm text-[#f8fafc]">{value}</span>
+                                            <span className="text-sm font-black text-white tracking-tight">{value}</span>
                                         )}
                                     </div>
                                 </div>
@@ -89,24 +95,13 @@ export function Contact() {
                         </div>
 
                         {/* Availability badge */}
-                        <div className="mt-8 inline-flex items-center gap-2.5 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
-                            <span className="relative flex h-2.5 w-2.5">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
+                        <div className="mt-12 inline-flex items-center gap-4 rounded-2xl border border-white/5 bg-white/[0.02] px-6 py-4 backdrop-blur-3xl shadow-2xl">
+                            <span className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00f2ff] opacity-75" />
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00f2ff]" />
                             </span>
-                            <span className="text-sm font-semibold text-primary">Available for opportunities — 2025</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00f2ff]">Available For Opportunities 2025</span>
                         </div>
-
-                        {/* Calendly button */}
-                        <a
-                            href="https://calendly.com/prolayjitbiswas14112004/30min"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="mt-6 flex w-fit items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-5 py-3 text-sm font-semibold text-[#f8fafc] hover:bg-white/10 hover:border-white/20 transition-all"
-                        >
-                            <Calendar className="h-4 w-4 text-primary" />
-                            Book a Meeting
-                        </a>
                     </motion.div>
 
                     {/* Right Form */}
@@ -195,12 +190,12 @@ export function Contact() {
                                 <button
                                     type="submit"
                                     disabled={status === "loading"}
-                                    className="w-full group flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-sm font-bold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-[0_0_25px_rgba(74,222,128,0.45)] disabled:opacity-70"
+                                    className="w-full group flex items-center justify-center gap-4 rounded-2xl bg-white text-black px-10 py-5 text-[10px] font-black uppercase tracking-[0.3em] transition-all hover:bg-[#00f2ff] hover:text-white disabled:opacity-70 shadow-2xl"
                                 >
                                     {status === "loading" ? (
-                                        <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</>
+                                        <><Loader2 className="h-4 w-4 animate-spin" /> Transmitting...</>
                                     ) : (
-                                        <>Send Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></>
+                                        <>Dispatch Message <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></>
                                     )}
                                 </button>
                             </form>

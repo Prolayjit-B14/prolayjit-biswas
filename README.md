@@ -39,7 +39,7 @@ Academic-grade focus on Edge AI optimization and Low-Power RTL Architectural eff
 ## 📂 REPOSITORY ARCHITECTURE
 
 ```text
-PRL-PORTFOLIO-v2.0/
+PROLAYJIT-PORTFOLIO-v2.5/
 ├── src/
 │   ├── app/            # Next.js App Router (Project Pages & Technical Ecosystem)
 │   ├── components/     # High-Fidelity Vibrant UI Components (Industrial Design)
