@@ -3,15 +3,15 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { 
-    SiNextdotjs, SiTypescript, SiTailwindcss, SiNodedotjs, 
-    SiDocker, SiFirebase, SiPostman, SiFigma, 
-    SiGit, SiLinux, SiGithub, SiCplusplus,
     SiEspressif, SiStmicroelectronics,
     SiTensorflow, SiPytorch, SiOpencv, SiPython,
     SiRust, SiGo, SiPostgresql, SiMongodb, SiRedis,
-    SiAmazonaws, SiGooglecloud, SiKubernetes,
-    SiArduino, SiRaspberrypi
+    SiGooglecloud, SiKubernetes,
+    SiArduino, SiRaspberrypi, SiDocker, SiNextdotjs,
+    SiTypescript, SiTailwindcss, SiNodedotjs, SiFirebase,
+    SiPostman, SiFigma, SiGit, SiLinux, SiGithub, SiCplusplus
 } from "react-icons/si";
+import { FaAws } from "react-icons/fa6";
 import { Cpu, Layers, BrainCircuit, Wrench, CircuitBoard, Wifi, Database, Cloud, Code2, Cpu as MicrochipTube } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -51,7 +51,7 @@ const SKILL_GROUPS = [
             { name: "TypeScript", icon: SiTypescript },
             { name: "Node.js", icon: SiNodedotjs },
             { name: "Rust/Go", icon: SiRust },
-            { name: "AWS/GCP", icon: SiAmazonaws },
+            { name: "AWS/GCP", icon: FaAws },
             { name: "K8s/Docker", icon: SiDocker }
         ]
     },

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
@@ -22,13 +22,13 @@ const ECOSYSTEM_ITEMS = [
 
 export function Navbar() {
     const pathname = usePathname();
-    const [open, setOpen] = useState(false);
-    const [labOpen, setLabOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const [open, setOpen] = React.useState(false);
+    const [labOpen, setLabOpen] = React.useState(false);
+    const [scrolled, setScrolled] = React.useState(false);
     const { theme, toggleTheme } = useTheme();
     const { scrollYProgress } = useScroll();
 
-    useEffect(() => {
+    React.useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
